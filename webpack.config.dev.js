@@ -7,6 +7,21 @@ module.exports = Object.assign({}, base, {
                 title: "FUI",
                 template: "index.html"
             })
-        ]
+        ],
+        module: {
+            rules: [
+                {
+                    test: /\.tsx?$/,
+                    use: [
+                        {
+                            loader: 'ts-loader',
+                            options: {
+                                transpileOnly: true
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
     }
 )
