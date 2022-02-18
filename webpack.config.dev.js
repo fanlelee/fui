@@ -20,6 +20,12 @@ module.exports = Object.assign({}, base, {
                             }
                         }
                     ]
+                },
+
+                {
+                    test: /\.svg$/,
+                    loader: 'svg-sprite-loader',
+                    options: { }
                 }
             ]
         }

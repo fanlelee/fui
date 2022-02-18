@@ -1,10 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Button from './button';
+import Icon from './icon'
 
-const a = 1
-console.log('hi')
+interface Props{
 
-ReactDOM.render(<Button/>,document.getElementById('root'))
+}
 
-export {Button, a};
+const App:React.FunctionComponent<Props> = ()=>{
+    return (
+        <Icon name='loading'/>
+    )
+}
+
+
+ReactDOM.render(<App/>, document.getElementById('root'));
