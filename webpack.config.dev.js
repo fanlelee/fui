@@ -25,7 +25,11 @@ module.exports = Object.assign({}, base, {
                 {
                     test: /\.svg$/,
                     loader: 'svg-sprite-loader',
-                    options: { }
+                    options: {}
+                },
+                {
+                    test: /\.scss$/,
+                        use: ['style-loader', 'css-loader', 'sass-loader']
                 }
             ]
         }
