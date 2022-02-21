@@ -7,8 +7,9 @@ interface Props {
 }
 
 const App: React.FunctionComponent<Props> = () => {
-    const fn = () => {
-        console.log('fn');
+    const fn :React.MouseEventHandler = (e) => {
+        console.log(((e.target as SVGElement ).children[0] as SVGUseElement).href);//断言
+
     };
     return (
         <Icon name='loading' onClick={fn}/>
