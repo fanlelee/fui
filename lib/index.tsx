@@ -7,12 +7,18 @@ interface Props {
 }
 
 const App: React.FunctionComponent<Props> = () => {
-    const fn :React.MouseEventHandler = (e) => {
-        console.log(((e.target as SVGElement ).children[0] as SVGUseElement).href);//断言
+    const fn: React.MouseEventHandler = (e) => {
+        console.log('onClick');
+        console.log(((e.target as SVGElement).children[0] as SVGUseElement).href);//断言
 
     };
     return (
-        <Icon name='loading' onClick={fn}/>
+        <Icon className='ss'
+            name='loading'
+            onClick={fn}
+            onMouseEnter={() => console.log('enter')}
+            onMouseLeave={() => console.log('leave')}
+        />
     );
 };
 
