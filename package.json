@@ -4,7 +4,9 @@
   "version": "0.0.2",
   "main": "dist/lib/index.js",
   "types": "dist/lib/index.d.js",
-  "files": ["/dist"],
+  "files": [
+    "/dist"
+  ],
   "scripts": {
     "test": "cross-env NODE_ENV=test jest --config=jest.config.js --runInBand",
     "start": "cross-env NODE_ENV=development webpack-dev-server --config webpack.config.dev.js",
@@ -28,6 +30,7 @@
     "@types/jest": "^27.0.2",
     "@types/react": "^17.0.30",
     "@types/react-dom": "^17.0.9",
+    "@types/react-router-dom": "^5.3.3",
     "@types/react-test-renderer": "^17.0.1",
     "@wojtekmaj/enzyme-adapter-react-17": "^0.6.6",
     "awesome-typescript-loader": "^5.2.1",
@@ -43,21 +46,23 @@
     "jest-junit": "^13.0.0",
     "jsdom": "^19.0.0",
     "jsdom-global": "^3.0.2",
+    "react-router-dom": "^6.2.1",
     "react-test-renderer": "^17.0.2",
     "sass": "^1.49.8",
     "sass-loader": "^10",
     "style-loader": "^2.0.0",
     "svg-sprite-loader": "4.1.3",
     "ts-jest": "^27.0.7",
+    "ts-loader": "8.2.0",
     "tslib": "^2.3.1",
     "typescript": "^4.4.3",
     "webpack": "^4.29.6",
     "webpack-cli": "3.2.3",
-    "webpack-dev-server": "3.2.1",
-    "ts-loader": "8.2.0"
+    "webpack-dev-server": "3.2.1"
   },
   "dependencies": {
     "react": "^17.0.2",
-    "react-dom": "^17.0.2"
+    "react-dom": "^17.0.2",
+    "react-router": "^6.2.1"
   }
 }
