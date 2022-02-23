@@ -4,6 +4,7 @@ import Icon from './lib/icon/icon';
 import {Route, Routes, Link, BrowserRouter} from 'react-router-dom';
 import IconExample from './lib/icon.example';
 import Xxx from './lib/xxx.example';
+import Dialog from './lib/dialog/dialog.example';
 
 ReactDOM.render(
     <BrowserRouter>
@@ -16,6 +17,7 @@ ReactDOM.render(
                     <ul>
                         <li><Link to='/icon'>icon组件</Link></li>
                         <li><Link to='/xxx'>xxx组件</Link></li>
+                        <li><Link to='/dialog'>dialog组件</Link></li>
                     </ul>
                 </aside>
                 <main>
@@ -23,6 +25,7 @@ ReactDOM.render(
                     <Routes>
                         <Route path='/icon' element={<IconExample/>}/>
                         <Route path='/xxx' element={<Xxx/>}/>
+                        <Route path='/dialog' element={<Dialog/>}/>
                     </Routes>
 
                 </main>
