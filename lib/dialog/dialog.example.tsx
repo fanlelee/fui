@@ -6,7 +6,9 @@ const DialogExample: React.FunctionComponent = () => {
     return (
         <>
             <button onClick={() => {setStatus(i => !i);}}>dialog toggle</button>
-            <Dialog visible={status}/>
+            <Dialog visible={status}>
+                <div>去不去吃饭？</div>
+            </Dialog>
         </>
     );
 };
