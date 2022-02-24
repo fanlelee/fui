@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import Dialog from './dialog';
+import Dialog,{alert} from './dialog';
 
 const DialogExample: React.FunctionComponent = () => {
     const [status, setStatus] = useState(false);
@@ -17,7 +17,7 @@ const DialogExample: React.FunctionComponent = () => {
                             <button onClick={() => setStatus(false)}>确定</button>
                         ]
                     }
-                    onClickClose={() => setStatus(false)}
+                    onClose={() => setStatus(false)}
                     closeOnClickMask={true}
                 >
                     <div>去不去吃饭？</div>
@@ -34,11 +34,14 @@ const DialogExample: React.FunctionComponent = () => {
                             <button onClick={() => setStatus2(false)}>确定2</button>
                         ]
                     }
-                    onClickClose={() => setStatus2(false)}
+                    onClose={() => setStatus2(false)}
                     closeOnClickMask={true}
                 >
                     <div>去不去吃饭？2</div>
                 </Dialog>
+            </div>
+            <div>
+                <button onClick={() => {alert('走不走？')}}>dialog3</button>
             </div>
         </>
     );
