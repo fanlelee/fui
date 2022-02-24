@@ -46,6 +46,7 @@ const Dialog: React.FunctionComponent<DialogProps> = (props) => {
                 <main className={sc('main')}>
                     {props.children}
                 </main>
+                {props.buttons &&
                 <footer className={sc('footer')}>
                     {
                         props.buttons &&
@@ -54,6 +55,7 @@ const Dialog: React.FunctionComponent<DialogProps> = (props) => {
                         )
                     }
                 </footer>
+                }
             </div>
         </>
         : null;
@@ -108,7 +110,7 @@ const modal = (content: ReactNode) => {
         ReactDOM.render(React.cloneElement(component, {visible: false}), div);
         ReactDOM.unmountComponentAtNode(div);
         div.remove();
-    }
+    };
     const component = <Dialog
         visible={true}
         onClose={onClose}>
@@ -118,7 +120,7 @@ const modal = (content: ReactNode) => {
     document.body.append(div);
     ReactDOM.render(component, div);
 
-    return onClose
+    return onClose;
 };
 
 

@@ -48,10 +48,10 @@ const DialogExample: React.FunctionComponent = () => {
             </div>
             <div>
                 <button onClick={() => {
-                    const close  = modal(
+                    const close = modal(
                         <div>
                             <p>modal</p>
-                            <button onClick={()=>{close()}}>关闭</button>
+                            <button onClick={() => close()}>关闭</button>
                         </div>
                     );
                 }}>
@@ -60,6 +60,6 @@ const DialogExample: React.FunctionComponent = () => {
             </div>
         </>
     );
-}
+};
 
 export default DialogExample;
