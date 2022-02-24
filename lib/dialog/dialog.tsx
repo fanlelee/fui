@@ -65,9 +65,9 @@ const alert = (content: string) => {
     const component = <Dialog
         visible={true}
         onClose={() => {
-            ReactDOM.render(React.cloneElement(component, {visible: false}),div);
-            ReactDOM.unmountComponentAtNode(div)
-            div.remove()
+            ReactDOM.render(React.cloneElement(component, {visible: false}), div);
+            ReactDOM.unmountComponentAtNode(div);
+            div.remove();
         }}>
         {content}
     </Dialog>;
@@ -75,6 +75,35 @@ const alert = (content: string) => {
     document.body.append(div);
     ReactDOM.render(component, div);
 };
+const confirm = (content: string, yes?: () => void, no?: () => void) => {
+    const onClickNo = () => {
+        ReactDOM.render(React.cloneElement(component, {visible: false}), div);
+        ReactDOM.unmountComponentAtNode(div);
+        div.remove();
+        no && no();
+    };
+    const onClickYes = () => {
+        ReactDOM.render(React.cloneElement(component, {visible: false}), div);
+        ReactDOM.unmountComponentAtNode(div);
+        div.remove();
+        yes && yes();
+    };
+    const component = <Dialog
+        visible={true}
+        onClose={() => {onClickNo()}}
+        buttons={[
+            <button onClick={onClickNo}>取消</button>,
+            <button onClick={onClickYes}>确定</button>
+        ]}
+    >
+        {content}
+    </Dialog>;
+    const div = document.createElement('div');
+    document.body.append(div);
+    ReactDOM.render(component, div);
+};
+
 
 export {alert};
+export {confirm};
 export default Dialog;
