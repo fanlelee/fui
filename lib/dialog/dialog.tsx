@@ -1,4 +1,4 @@
-import React, {ReactElement} from 'react';
+import React, {ReactElement, ReactNode} from 'react';
 import './dialog.scss';
 import Icon from '../icon/icon';
 import ReactDOM from 'react-dom';
@@ -90,7 +90,7 @@ const confirm = (content: string, yes?: () => void, no?: () => void) => {
     };
     const component = <Dialog
         visible={true}
-        onClose={() => {onClickNo()}}
+        onClose={() => {onClickNo();}}
         buttons={[
             <button onClick={onClickNo}>取消</button>,
             <button onClick={onClickYes}>确定</button>
@@ -103,7 +103,24 @@ const confirm = (content: string, yes?: () => void, no?: () => void) => {
     ReactDOM.render(component, div);
 };
 
+const modal = (content: ReactNode) => {
+    const onClose = () => {
+        ReactDOM.render(React.cloneElement(component, {visible: false}), div);
+        ReactDOM.unmountComponentAtNode(div);
+        div.remove();
+    }
+    const component = <Dialog
+        visible={true}
+        onClose={onClose}>
+        {content}
+    </Dialog>;
+    const div = document.createElement('div');
+    document.body.append(div);
+    ReactDOM.render(component, div);
 
-export {alert};
-export {confirm};
+    return onClose
+};
+
+
+export {alert, confirm, modal};
 export default Dialog;
