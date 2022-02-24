@@ -63,57 +63,41 @@ const Dialog: React.FunctionComponent<DialogProps> = (props) => {
         ReactDOM.createPortal(res, document.body)
     );
 };
+
+Dialog.defaultProps = {
+    closeOnClickMask: false
+};
 const alert = (content: string) => {
-    const component = <Dialog
-        visible={true}
-        onClose={() => {
-            ReactDOM.render(React.cloneElement(component, {visible: false}), div);
-            ReactDOM.unmountComponentAtNode(div);
-            div.remove();
-        }}>
-        {content}
-    </Dialog>;
-    const div = document.createElement('div');
-    document.body.append(div);
-    ReactDOM.render(component, div);
+    const button = <button onClick={() => onClose()}>OK</button>;
+    const onClose = modal(content,[button]);
 };
 const confirm = (content: string, yes?: () => void, no?: () => void) => {
     const onClickNo = () => {
-        ReactDOM.render(React.cloneElement(component, {visible: false}), div);
-        ReactDOM.unmountComponentAtNode(div);
-        div.remove();
+        onClose();
         no && no();
     };
     const onClickYes = () => {
-        ReactDOM.render(React.cloneElement(component, {visible: false}), div);
-        ReactDOM.unmountComponentAtNode(div);
-        div.remove();
+        onClose();
         yes && yes();
     };
-    const component = <Dialog
-        visible={true}
-        onClose={() => {onClickNo();}}
-        buttons={[
-            <button onClick={onClickNo}>取消</button>,
-            <button onClick={onClickYes}>确定</button>
-        ]}
-    >
-        {content}
-    </Dialog>;
-    const div = document.createElement('div');
-    document.body.append(div);
-    ReactDOM.render(component, div);
+    const onClose = modal(content, [
+        <button onClick={onClickNo}>取消</button>,
+        <button onClick={onClickYes}>确定</button>
+    ]);
 };
 
-const modal = (content: ReactNode) => {
+const modal = (content: ReactNode, buttons?: Array<ReactElement>) => {
     const onClose = () => {
         ReactDOM.render(React.cloneElement(component, {visible: false}), div);
         ReactDOM.unmountComponentAtNode(div);
         div.remove();
+        console.log('close了');
     };
     const component = <Dialog
         visible={true}
-        onClose={onClose}>
+        onClose={onClose}
+        buttons={buttons}
+    >
         {content}
     </Dialog>;
     const div = document.createElement('div');
