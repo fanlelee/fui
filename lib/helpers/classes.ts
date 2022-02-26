@@ -3,14 +3,27 @@ function classes(...names: (string | undefined)[]) {
 
 }
 
+interface ClassToggles {
+    [K: string]: boolean
+}
+
 function scopedClassMaker(prefix: string) {
-    return (name?: string, extra?: Array<string | undefined>) => {
-        const result = ['fui', prefix, name].filter(Boolean).join('-');
-        if(extra){
-            const extraString = extra.filter(Boolean).join(' ')
-            return [result, extraString].filter(Boolean).join(' ');
-        }else{
-            return result
+    return (name: string | ClassToggles, extra?: string) => {
+
+        const result =
+            typeof name === 'string' ?
+                ['fui', prefix, name].filter(Boolean).join('-') :
+                Object.entries(name)
+                    .filter(k => k[1])
+                    .map(k => k[0])
+                    .map(k => ['fui', prefix, k].filter(Boolean).join('-'))
+                    .join(' ');
+
+
+        if (extra) {
+            return [result, extra].filter(Boolean).join(' ');
+        } else {
+            return result;
         }
     };
 }

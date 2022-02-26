@@ -13,13 +13,11 @@ interface LayoutProps extends React.HTMLAttributes<HTMLDivElement> {
 const Layout: React.FunctionComponent<LayoutProps> = (props) => {
     const {className, ...rest} = props;
     const children = props.children as Array<ReactElement>;
-    const hasAside = children.length &&
+    const hasAside = length in children &&
         children.reduce((result, node) => result || node.type === Aside, false);
 
-    const asideClass = hasAside ? 'hasAside' : '';
-
     return (
-        <div className={sc('', [props.className, asideClass])}
+        <div className={sc({'': true, hasAside}, props.className)}
              {...rest}
         >
             {props.children}

@@ -10,7 +10,7 @@ interface ContentProps extends React.HTMLAttributes<HTMLDivElement> {
 const Content: React.FunctionComponent<ContentProps> = (props) => {
     const {className,...rest} = props
     return (
-        <div className={sc('content', [props.className])}
+        <div className={sc('content', props.className)}
              {...rest}
         >
             {props.children}
