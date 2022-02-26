@@ -4,48 +4,49 @@ import Header from './header';
 import Content from './content';
 import Footer from './footer';
 import Aside from './aside';
+import './layout.example.scss'
 
 
 const LayoutExample: React.FunctionComponent = () => {
     return (<>
         <div>
             例1：
-            <Layout style={{height:200}}>
-                <Header>header</Header>
-                <Content>content</Content>
-                <Footer>footer</Footer>
+            <Layout className='l' style={{height:200}}>
+                <Header className='h'>header</Header>
+                <Content className='c'>content</Content>
+                <Footer className='f'>footer</Footer>
             </Layout>
         </div>
         <div>
             例2：
-            <Layout style={{height:200}}>
-                <Header>header</Header>
+            <Layout className='l' style={{height:200}}>
+                <Header className='h'>header</Header>
                 <Layout>
-                    <Aside>aside</Aside>
-                    <Content>content</Content>
+                    <Aside className='a'>aside</Aside>
+                    <Content className='c'>content</Content>
                 </Layout>
-                <Footer>footer</Footer>
+                <Footer className='f'>footer</Footer>
             </Layout>
         </div>
         <div>
             例3：
-            <Layout style={{height:200}}>
-                <Header>header</Header>
+            <Layout className='l' style={{height:200}}>
+                <Header className='h'>header</Header>
                 <Layout>
-                    <Content>content</Content>
-                    <Aside>aside</Aside>
+                    <Content className='c'>content</Content>
+                    <Aside className='a'>aside</Aside>
                 </Layout>
-                <Footer>footer</Footer>
+                <Footer className='f'>footer</Footer>
             </Layout>
         </div>
         <div>
             例4：
-            <Layout  style={{height:200}}>
-                <Aside>aside</Aside>
+            <Layout className='l' style={{height:200}}>
+                <Aside className='a'>aside</Aside>
                 <Layout>
-                    <Header>Header</Header>
-                    <Content>Content</Content>
-                    <Footer>Footer</Footer>
+                    <Header className='h'>Header</Header>
+                    <Content className='c'>Content</Content>
+                    <Footer className='f'>Footer</Footer>
                 </Layout>
             </Layout>
         </div>
