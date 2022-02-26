@@ -4,10 +4,11 @@ function classes(...names: (string | undefined)[]) {
 }
 
 function scopedClassMaker(prefix: string) {
-    return (name?: string, extra?: string) => {
+    return (name?: string, extra?: Array<string | undefined>) => {
         const result = ['fui', prefix, name].filter(Boolean).join('-');
         if(extra){
-            return [result, extra].filter(Boolean).join(' ');
+            const extraString = extra.filter(Boolean).join(' ')
+            return [result, extraString].filter(Boolean).join(' ');
         }else{
             return result
         }
