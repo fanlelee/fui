@@ -1,6 +1,8 @@
 import React from 'react';
+import Icon from './icon';
+
 
  const IconExample :React.FunctionComponent = ()=>{
-    return <div>我是icon</div>
+    return <Icon name='loading'/>
 }
 export default IconExample
