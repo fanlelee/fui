@@ -1,15 +1,10 @@
-function classes(...names: (string | undefined)[]) {
-    return names.filter(Boolean).join(' ');
-
-}
-
 interface ClassToggles {
     [K: string]: boolean
 }
 
 function scopedClassMaker(prefix: string) {
     return (name: string | ClassToggles, extra?: string) => {
-        const namesObject = typeof name === 'string' ? {name: true} : name;
+        const namesObject = typeof name === 'string' ? {[name]: true} : name;
         return  Object.entries(namesObject)
             .filter(k => k[1])
             .map(k => k[0])
@@ -21,4 +16,3 @@ function scopedClassMaker(prefix: string) {
 }
 
 export {scopedClassMaker};
-export default classes;
