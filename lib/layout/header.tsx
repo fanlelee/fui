@@ -3,11 +3,11 @@ import {scopedClassMaker} from '../helpers/classes';
 
 const sc = scopedClassMaker('layout')
 
-interface FooterProps extends React.HTMLAttributes<HTMLDivElement> {
+interface HeaderProps extends React.HTMLAttributes<HTMLDivElement> {
 
 }
 
-const Footer: React.FunctionComponent<FooterProps> = (props) => {
+const Header: React.FunctionComponent<HeaderProps> = (props) => {
     const {className,...rest} = props
     return (
         <div className={sc('header', props.className)}
@@ -18,4 +18,4 @@ const Footer: React.FunctionComponent<FooterProps> = (props) => {
     );
 };
 
-export default Footer;
+export default Header;

@@ -3,11 +3,11 @@ import {scopedClassMaker} from '../helpers/classes';
 
 const sc = scopedClassMaker('layout')
 
-interface ContentProps extends React.HTMLAttributes<HTMLDivElement> {
+interface AsideProps extends React.HTMLAttributes<HTMLDivElement> {
 
 }
 
-const Aside: React.FunctionComponent<ContentProps> = (props) => {
+const Aside: React.FunctionComponent<AsideProps> = (props) => {
     const {className,...rest} = props
     return (
         <div className={sc('aside', props.className)}
