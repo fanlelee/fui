@@ -1,13 +1,13 @@
-import React from 'react';
-import Highlight, {defaultProps} from "prism-react-renderer";
+import React, {useState} from 'react';
+import Highlight, {defaultProps} from 'prism-react-renderer';
 
 interface DemoProps {
     code: string
 }
 
 const Demo: React.FunctionComponent<DemoProps> = (props) => {
-    return (<>
-        {props.children}
+    const [codeVisible, setCodeVisible] = useState(false)
+    const highlight = (
         <Highlight {...defaultProps} code={props.code} language="jsx">
             {({className, style, tokens, getLineProps, getTokenProps}) => (
                 <pre className={className} style={style}>
@@ -21,6 +21,13 @@ const Demo: React.FunctionComponent<DemoProps> = (props) => {
             </pre>
             )}
         </Highlight>
+    );
+    return (<>
+        <div>{props.children}</div>
+        <div>
+            <button onClick={()=>{setCodeVisible((i=>!i))}}>查看代码</button>
+            {codeVisible && highlight}
+        </div>
     </>);
 };
 
