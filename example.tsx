@@ -8,12 +8,11 @@ import './example.scss';
 import Layout, {Header, Aside, Content, Footer} from './lib/layout/layout';
 
 
-
 ReactDOM.render(
     <HashRouter>
         <Layout className="site-page">
             <Header className="site-header">
-                <img src='./logo.png' width="48" height="48" alt=""/>
+                <img src={require('./logo.png').default} width="48" height="48" alt=""/>
                 <span> FUI </span>
             </Header>
             <Layout>
