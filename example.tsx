@@ -5,16 +5,17 @@ import IconExample from './lib/icon/icon.example';
 import Dialog from './lib/dialog/dialog.example';
 import LayoutExample from './lib/layout/layout.example';
 import './example.scss';
-import Layout, {Header, Aside, Content} from './lib/layout/layout';
+import Layout, {Header, Aside, Content, Footer} from './lib/layout/layout';
 
 ReactDOM.render(
     <HashRouter>
-        <Layout>
-            <Header>
-                FUI
+        <Layout className="site-page">
+            <Header className="site-header">
+                <img src='./logo.png' width="48" height="48" alt=""/>
+                <span> FUI </span>
             </Header>
             <Layout>
-                <Aside>
+                <Aside className="site-aside">
                     组件：
                     <ul>
                         <li><Link to='/icon'>icon组件</Link></li>
@@ -22,7 +23,7 @@ ReactDOM.render(
                         <li><Link to='/layout'>layout组件</Link></li>
                     </ul>
                 </Aside>
-                <Content>
+                <Content className="site-main">
                     <Routes>
                         <Route path='/icon' element={<IconExample/>}/>
                         <Route path='/dialog' element={<Dialog/>}/>
@@ -30,6 +31,9 @@ ReactDOM.render(
                     </Routes>
                 </Content>
             </Layout>
+            <Footer className="site-footer">
+                &copy; 樊蕾蕾
+            </Footer>
         </Layout>
     </HashRouter>
     , document.getElementById('root'));
