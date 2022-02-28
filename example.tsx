@@ -1,11 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {Route, Routes, NavLink, HashRouter} from 'react-router-dom';
-import IconExample from './lib/icon/icon.example';
+import IconDemo from './lib/icon/icon.demo';
 import Dialog from './lib/dialog/dialog.example';
 import LayoutExample from './lib/layout/layout.example';
 import './example.scss';
 import Layout, {Header, Aside, Content, Footer} from './lib/layout/layout';
+
+
 
 ReactDOM.render(
     <HashRouter>
@@ -25,7 +27,7 @@ ReactDOM.render(
                 </Aside>
                 <Content className="site-main">
                     <Routes>
-                        <Route path='/icon' element={<IconExample/>}/>
+                        <Route path='/icon' element={<IconDemo/>}/>
                         <Route path='/dialog' element={<Dialog/>}/>
                         <Route path='/layout' element={<LayoutExample/>}/>
                     </Routes>
