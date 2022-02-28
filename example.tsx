@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {Route, Routes, Link, HashRouter} from 'react-router-dom';
+import {Route, Routes, NavLink, HashRouter} from 'react-router-dom';
 import IconExample from './lib/icon/icon.example';
 import Dialog from './lib/dialog/dialog.example';
 import LayoutExample from './lib/layout/layout.example';
@@ -16,11 +16,11 @@ ReactDOM.render(
             </Header>
             <Layout>
                 <Aside className="site-aside">
-                    组件：
+                    <h2>组件</h2>
                     <ul>
-                        <li><Link to='/icon'>icon组件</Link></li>
-                        <li><Link to='/dialog'>dialog组件</Link></li>
-                        <li><Link to='/layout'>layout组件</Link></li>
+                        <li><NavLink to='/icon'>icon组件</NavLink></li>
+                        <li><NavLink to='/dialog'>dialog组件</NavLink></li>
+                        <li><NavLink to='/layout'>layout组件</NavLink></li>
                     </ul>
                 </Aside>
                 <Content className="site-main">
