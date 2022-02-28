@@ -6,6 +6,7 @@ import Dialog from './lib/dialog/dialog.example';
 import LayoutExample from './lib/layout/layout.example';
 import './example.scss';
 import Layout, {Header, Aside, Content, Footer} from './lib/layout/layout';
+import FormExample from './lib/form/form.example';
 
 
 ReactDOM.render(
@@ -22,6 +23,7 @@ ReactDOM.render(
                         <li><NavLink to='/icon'>icon组件</NavLink></li>
                         <li><NavLink to='/dialog'>dialog组件</NavLink></li>
                         <li><NavLink to='/layout'>layout组件</NavLink></li>
+                        <li><NavLink to='/form'>form组件</NavLink></li>
                     </ul>
                 </Aside>
                 <Content className="site-main">
@@ -29,6 +31,7 @@ ReactDOM.render(
                         <Route path='/icon' element={<IconDemo/>}/>
                         <Route path='/dialog' element={<Dialog/>}/>
                         <Route path='/layout' element={<LayoutExample/>}/>
+                        <Route path='/form' element={<FormExample/>}/>
                     </Routes>
                 </Content>
             </Layout>
