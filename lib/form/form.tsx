@@ -1,4 +1,6 @@
 import React, {ReactEventHandler, ReactFragment} from 'react';
+import Validator from './validator';
+
 
 export interface FormData {
     [K: string]: any
@@ -19,6 +21,7 @@ const Form: React.FunctionComponent<FormProps> = (props) => {
     };
     const onSubmitForm:ReactEventHandler<HTMLFormElement> = (e)=>{
         e.preventDefault()
+        console.log(Validator(props.value, [{key: 'username', required: true}]));
         props.onSubmit(e)
     }
     return (<>

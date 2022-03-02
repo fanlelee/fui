@@ -1,8 +1,6 @@
 import React, {useState} from 'react';
 import Form, {FormData}  from './form';
 
-
-
 const FormExample: React.FunctionComponent = () => {
     const [formData, setFormData] = useState<FormData>({
         username: 'abc',
@@ -14,7 +12,7 @@ const FormExample: React.FunctionComponent = () => {
     ]);
 
     const onSubmit = ()=>{
-        console.log(formData);
+        console.log(formData,'formData');
     }
     return (<>
         <Form
