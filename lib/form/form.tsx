@@ -1,6 +1,4 @@
 import React, {ReactEventHandler, ReactFragment} from 'react';
-import Validator from './validator';
-
 
 export interface FormData {
     [K: string]: any
@@ -11,7 +9,8 @@ interface FormProps {
     fields: Array<{ name: string, label: string, input: { type: string } }>,
     buttons: ReactFragment
     onChange: (value: FormData) => void
-    onSubmit:ReactEventHandler<HTMLFormElement>
+    onSubmit: ReactEventHandler<HTMLFormElement>
+    errors: { [K: string]: string[] }
 }
 
 const Form: React.FunctionComponent<FormProps> = (props) => {
@@ -19,16 +18,10 @@ const Form: React.FunctionComponent<FormProps> = (props) => {
         const newData = {...props.value, [name]: value};
         props.onChange(newData);
     };
-    const onSubmitForm:ReactEventHandler<HTMLFormElement> = (e)=>{
-        e.preventDefault()
-        console.log(Validator(props.value,
-            [
-                {key: 'username', required: true},
-                {key: 'password', required: true,minLength:6,maxLength:12,pattern:/^[a-zA-Z0-9_]{8}$/}
-            ]
-        ));
-        props.onSubmit(e)
-    }
+    const onSubmitForm: ReactEventHandler<HTMLFormElement> = (e) => {
+        e.preventDefault();
+        props.onSubmit(e);
+    };
     return (<>
         <form action="" onSubmit={onSubmitForm}>
             {props.fields.map((n, i) =>
@@ -39,11 +32,13 @@ const Form: React.FunctionComponent<FormProps> = (props) => {
                         value={props.value[n.name]}
                         onChange={(e) => {onChangeInput(n.name, e.target.value);}}
                     />
+                    {JSON.stringify(props.errors[n.name])}
                 </div>
             )}
             {props.buttons}
         </form>
     </>);
 };
+
 
 export default Form;

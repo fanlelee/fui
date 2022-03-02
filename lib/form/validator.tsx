@@ -5,7 +5,7 @@ interface FormRule {
     required: boolean,
     minLength?: number,
     maxLength?: number,
-    pattern?: RegExp
+    pattern?: RegExp,
 }
 
 type FormRules = Array<FormRule>
