@@ -21,7 +21,12 @@ const Form: React.FunctionComponent<FormProps> = (props) => {
     };
     const onSubmitForm:ReactEventHandler<HTMLFormElement> = (e)=>{
         e.preventDefault()
-        console.log(Validator(props.value, [{key: 'username', required: true}]));
+        console.log(Validator(props.value,
+            [
+                {key: 'username', required: true},
+                {key: 'password', required: true,minLength:6,maxLength:12,pattern:/^[a-zA-Z0-9_]{8}$/}
+            ]
+        ));
         props.onSubmit(e)
     }
     return (<>
