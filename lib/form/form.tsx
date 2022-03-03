@@ -44,6 +44,11 @@ const Form: React.FunctionComponent<FormProps> = (props) => {
                                 value={rest.value[n.name]}
                                 onChange={(e) => {onChangeInput(n.name, e.target.value);}}
                             />
+                            <div className={sc('error')}>
+                                {rest.errors[n.name]?
+                                    rest.errors[n.name].join('，'):
+                                <span>&nbsp;</span>}
+                            </div>
                         </td>
                     </tr>
                 )}

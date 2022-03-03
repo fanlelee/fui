@@ -14,6 +14,7 @@ const FormExample: React.FunctionComponent = () => {
     ]);
 
     const onSubmit = () => {
+        console.log(Validator(formData, rules));
         setErrors(Validator(formData,rules))
     };
     const rules = [

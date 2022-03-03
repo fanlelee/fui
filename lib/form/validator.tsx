@@ -44,7 +44,6 @@ const Validator = (data: FormData, rules: FormRules): FormErrors => {
             data[rule.key].length >= rule.maxLength) {
             addError(rule.key, '太长了');
         }
-        rule.pattern && console.log(!rule.pattern.test(data[rule.key]));
         if (rule.pattern && !rule.pattern.test(data[rule.key])) {
             addError(rule.key, '格式不对');
         }
