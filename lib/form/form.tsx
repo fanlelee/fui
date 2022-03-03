@@ -1,6 +1,9 @@
 import React, {ReactEventHandler, ReactFragment} from 'react';
 import Input from '../input/input';
+import {scopedClassMaker} from '../helpers/classes';
+import './form.scss'
 
+const sc = scopedClassMaker('form');
 
 export interface FormData {
     [K: string]: any
@@ -13,31 +16,35 @@ interface FormProps {
     onChange: (value: FormData) => void
     onSubmit: ReactEventHandler<HTMLFormElement>
     errors: { [K: string]: string[] }
+    className?:string
 }
 
 const Form: React.FunctionComponent<FormProps> = (props) => {
+    const {className, ...rest} = props;
     const onChangeInput = (name: string, value: any) => {
-        const newData = {...props.value, [name]: value};
-        props.onChange(newData);
+        const newData = {...rest.value, [name]: value};
+        rest.onChange(newData);
     };
     const onSubmitForm: ReactEventHandler<HTMLFormElement> = (e) => {
         e.preventDefault();
-        props.onSubmit(e);
+        rest.onSubmit(e);
     };
     return (<>
-        <form action="" onSubmit={onSubmitForm}>
-            {props.fields.map((n, i) =>
-                <div key={i}>
-                    {n.label}:
-                    <Input
+        <form action="" onSubmit={onSubmitForm} className={sc('', className)}>
+            <table>
+            {rest.fields.map((n, i) =>
+                <tr key={i}>
+                    <td><span className={sc('label')}>{n.label}</span></td>
+                    <td><Input
+                        className={sc('input')}
                         type={n.input.type}
-                        value={props.value[n.name]}
+                        value={rest.value[n.name]}
                         onChange={(e) => {onChangeInput(n.name, e.target.value);}}
-                    />
-                    {JSON.stringify(props.errors[n.name])}
-                </div>
+                    /></td>
+                </tr>
             )}
-            {props.buttons}
+            </table>
+            {rest.buttons}
         </form>
     </>);
 };

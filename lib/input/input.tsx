@@ -10,7 +10,7 @@ const sc = scopedClassMaker('input');
 const Input: React.FunctionComponent<InputProps> = (props) => {
     const {className, ...rest} = props;
     return (
-        <input className={sc('',)} {...rest}/>
+        <input className={sc('',className)} {...rest}/>
     );
 };
 
