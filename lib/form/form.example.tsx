@@ -29,7 +29,7 @@ const FormExample: React.FunctionComponent = () => {
             buttons={
                 <>
                     <Button type='button'>取消</Button>
-                    <Button type='submit'>确定</Button>
+                    <Button type='submit' level='important'>确定</Button>
                 </>
             }
             onChange={newData => setFormData(newData)}

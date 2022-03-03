@@ -47,8 +47,12 @@ const Form: React.FunctionComponent<FormProps> = (props) => {
                         </td>
                     </tr>
                 )}
+                <tr className={sc('tr')}>
+                    <td className={sc('td')}/>
+                    <td className={sc('td')}>{rest.buttons}</td>
+                </tr>
             </table>
-            {rest.buttons}
+
         </form>
     </>);
 };
