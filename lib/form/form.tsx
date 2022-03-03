@@ -1,7 +1,7 @@
 import React, {ReactEventHandler, ReactFragment} from 'react';
 import Input from '../input/input';
 import {scopedClassMaker} from '../helpers/classes';
-import './form.scss'
+import './form.scss';
 
 const sc = scopedClassMaker('form');
 
@@ -16,7 +16,7 @@ interface FormProps {
     onChange: (value: FormData) => void
     onSubmit: ReactEventHandler<HTMLFormElement>
     errors: { [K: string]: string[] }
-    className?:string
+    className?: string
 }
 
 const Form: React.FunctionComponent<FormProps> = (props) => {
@@ -31,18 +31,22 @@ const Form: React.FunctionComponent<FormProps> = (props) => {
     };
     return (<>
         <form action="" onSubmit={onSubmitForm} className={sc('', className)}>
-            <table>
-            {rest.fields.map((n, i) =>
-                <tr key={i}>
-                    <td><span className={sc('label')}>{n.label}</span></td>
-                    <td><Input
-                        className={sc('input')}
-                        type={n.input.type}
-                        value={rest.value[n.name]}
-                        onChange={(e) => {onChangeInput(n.name, e.target.value);}}
-                    /></td>
-                </tr>
-            )}
+            <table className={sc('table')}>
+                {rest.fields.map((n, i) =>
+                    <tr key={i} className={sc('tr')}>
+                        <td className={sc('td')}>
+                            <span className={sc('label')}>{n.label}</span>
+                        </td>
+                        <td className={sc('td')}>
+                            <Input
+                                className={sc('input')}
+                                type={n.input.type}
+                                value={rest.value[n.name]}
+                                onChange={(e) => {onChangeInput(n.name, e.target.value);}}
+                            />
+                        </td>
+                    </tr>
+                )}
             </table>
             {rest.buttons}
         </form>

@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import Form, {FormData} from './form';
 import Validator from './validator';
+import Button from '../button/button';
 
 const FormExample: React.FunctionComponent = () => {
     const [formData, setFormData] = useState<FormData>({
@@ -27,8 +28,8 @@ const FormExample: React.FunctionComponent = () => {
             fields={fields}
             buttons={
                 <>
-                    <button type='button'>取消</button>
-                    <button type='submit'>确定</button>
+                    <Button type='button'>取消</Button>
+                    <Button type='submit'>确定</Button>
                 </>
             }
             onChange={newData => setFormData(newData)}
