@@ -1,0 +1,16 @@
+@import "../_helper.scss";
+.fui-input{
+  border:1px solid $border-color;
+  line-height:28px;
+  padding:4px 8px;
+  border-radius:4px;
+  transition: box-shadow .5s;
+  &:focus{
+    outline: none;
+    border-color:lighten($main-color,20%);
+    box-shadow: 0 0 10 0 fade-out($main-color,.5);
+  }
+  &:hover{
+    border-color:lighten($main-color,20%);
+  }
+}

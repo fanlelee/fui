@@ -1,4 +1,6 @@
 import React, {ReactEventHandler, ReactFragment} from 'react';
+import Input from '../input/input';
+
 
 export interface FormData {
     [K: string]: any
@@ -27,7 +29,7 @@ const Form: React.FunctionComponent<FormProps> = (props) => {
             {props.fields.map((n, i) =>
                 <div key={i}>
                     {n.label}:
-                    <input
+                    <Input
                         type={n.input.type}
                         value={props.value[n.name]}
                         onChange={(e) => {onChangeInput(n.name, e.target.value);}}
