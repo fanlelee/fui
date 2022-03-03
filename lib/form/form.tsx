@@ -17,6 +17,7 @@ interface FormProps {
     onSubmit: ReactEventHandler<HTMLFormElement>
     errors: { [K: string]: string[] }
     className?: string
+    errorsDisplayMode?: 'first' | 'all';
 }
 
 const Form: React.FunctionComponent<FormProps> = (props) => {
@@ -45,9 +46,11 @@ const Form: React.FunctionComponent<FormProps> = (props) => {
                                 onChange={(e) => {onChangeInput(n.name, e.target.value);}}
                             />
                             <div className={sc('error')}>
-                                {rest.errors[n.name]?
-                                    rest.errors[n.name].join('，'):
-                                <span>&nbsp;</span>}
+                                {rest.errors[n.name] ?
+                                    (rest.errorsDisplayMode === 'first' ?
+                                        rest.errors[n.name][0] :
+                                        rest.errors[n.name].join('，')) :
+                                    <span>&nbsp;</span>}
                             </div>
                         </td>
                     </tr>
@@ -60,6 +63,9 @@ const Form: React.FunctionComponent<FormProps> = (props) => {
 
         </form>
     </>);
+};
+Form.defaultProps = {
+    errorsDisplayMode: 'first',
 };
 
 

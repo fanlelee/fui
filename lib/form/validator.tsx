@@ -30,7 +30,6 @@ const Validator = (data: FormData, rules: FormRules): FormErrors => {
     };
     rules.map((rule) => {
         if (rule.required && isEmpty(data[rule.key])) {
-
             addError(rule.key, '必填');
         }
         if ((rule.minLength) &&
