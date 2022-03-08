@@ -2,7 +2,7 @@ import {FormData} from './form';
 
 interface FormRule {
     key: string,
-    required: boolean,
+    required?: boolean,
     minLength?: number,
     maxLength?: number,
     pattern?: RegExp,
@@ -49,20 +49,17 @@ const Validator = (data: FormData, rules: FormRules, callback: (errors: FormErro
         }
 
         if (rule.validate) {
-            const promise = new Promise<void>((resolve, reject) => {
-                rule.validate!(data[rule.key], resolve, reject);
-            });
-            promise.then(undefined, (fail) => {
-                fail && addError(rule.key, fail);
-            });
-            promiseList.push(promise);
+            const after = new Promise<void>(
+                (resolve, reject) => rule.validate!(data[rule.key], resolve, reject))
+                .then(undefined, (fail) => {
+                    fail && addError(rule.key, fail);
+                });
+            promiseList.push(after);
         }
     });
 
 
     Promise.all(promiseList).then(() => {
-        callback(errors);
-    }, () => {
         callback(errors);
     });
 };

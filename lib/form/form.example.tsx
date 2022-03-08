@@ -10,7 +10,7 @@ const checkID = (id: string, succeed: (reason?: any) => void, fail: (reason?: an
         } else {
             fail('身份证错了');
         }
-    }, 0);
+    }, 2000);
 };
 
 
@@ -27,7 +27,9 @@ const FormExample: React.FunctionComponent = () => {
     ]);
 
     const onSubmit = () => {
-        Validator(formData, rules, (errors: any) => {setErrors(errors);});
+        Validator(formData, rules, (errors: any) => {
+            console.log(errors);
+            setErrors(errors);});
     };
     const rules = [
         {key: 'username', required: true},
@@ -35,6 +37,10 @@ const FormExample: React.FunctionComponent = () => {
         {
             key: 'id',
             required: true,
+            validate: checkID,
+        },
+        {
+            key: 'username',
             validate: checkID
         },
     ];
