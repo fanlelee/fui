@@ -10,7 +10,7 @@ const checkID = (id: string, succeed: (reason?: any) => void, fail: (reason?: an
         } else {
             fail('身份证错了');
         }
-    }, 3000);
+    }, 0);
 };
 
 
@@ -35,10 +35,7 @@ const FormExample: React.FunctionComponent = () => {
         {
             key: 'id',
             required: true,
-            validate: (id: string) =>
-                new Promise<void>((resolve, reject) => {
-                    checkID(id, resolve, reject);
-                })
+            validate: checkID
         },
     ];
 
