@@ -9,7 +9,6 @@ const scrollbarWidth = () => {
     document.body.append(div);
     const width = div.offsetWidth - div.clientWidth;
     document.body.removeChild(div);
-
     return width;
 
 };
