@@ -7,6 +7,7 @@ import LayoutExample from './lib/layout/layout.example';
 import './example.scss';
 import Layout, {Header, Aside, Content, Footer} from './lib/layout/layout';
 import FormExample from './lib/form/form.example';
+import ScrollExample from './lib/scroll/scroll.example';
 
 
 ReactDOM.render(
@@ -24,6 +25,7 @@ ReactDOM.render(
                         <li><NavLink to='/dialog'>dialog组件</NavLink></li>
                         <li><NavLink to='/layout'>layout组件</NavLink></li>
                         <li><NavLink to='/form'>form组件</NavLink></li>
+                        <li><NavLink to='/scroll'>scroll组件</NavLink></li>
                     </ul>
                 </Aside>
                 <Content className="site-main">
@@ -32,6 +34,7 @@ ReactDOM.render(
                         <Route path='/dialog' element={<Dialog/>}/>
                         <Route path='/layout' element={<LayoutExample/>}/>
                         <Route path='/form' element={<FormExample/>}/>
+                        <Route path='/scroll' element={<ScrollExample/>}/>
                     </Routes>
                 </Content>
             </Layout>
