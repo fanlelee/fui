@@ -20,7 +20,7 @@ const Scroll: React.FunctionComponent<ScrollProps> = (props) => {
         const innerClientHeight = innerRef.current!.getBoundingClientRect().height;
         const barHeight = innerClientHeight * innerClientHeight / innerAllHeight;
         const maxHeight = innerRef.current!.getBoundingClientRect().height - barHeight;
-        if (height >=  maxHeight) return;
+        if (height >= maxHeight) return;
         return _setBarTop(height);
     };
     useEffect(() => {
@@ -34,7 +34,6 @@ const Scroll: React.FunctionComponent<ScrollProps> = (props) => {
         const innerClientHeight = innerRef.current!.getBoundingClientRect().height;
         const innerScrollHeight = innerRef.current!.scrollTop;
         setBarTop(innerScrollHeight * innerClientHeight / innerAllHeight);
-        // refFirstBarTop.current = innerScrollHeight * innerClientHeight / innerAllHeight;
     };
 
     const refFirstBarTop = useRef(0);
@@ -43,24 +42,31 @@ const Scroll: React.FunctionComponent<ScrollProps> = (props) => {
     const onMouseDown: MouseEventHandler<HTMLDivElement> = (e) => {
         refDragging.current = true;
         refDownY.current = e.clientY;
-        refFirstBarTop.current = barTop
+        refFirstBarTop.current = barTop;
     };
     const onMouseMove = (e: MouseEvent) => {
         if (refDragging.current) {
             const delta = e.clientY - refDownY.current;
             setBarTop(refFirstBarTop.current + delta);
+            const x = innerRef.current!.scrollHeight * (refFirstBarTop.current + delta) / innerRef.current!.getBoundingClientRect().height;
+            innerRef.current!.scrollTop = x;
         }
     };
     const onMouseUp = () => {
         refDragging.current = false;
     };
 
+    const onSelect = (e: Event) => {
+        refDragging.current && e.preventDefault();
+    };
     useEffect(() => {
         document.addEventListener('mousemove', onMouseMove);
         document.addEventListener('mouseup', onMouseUp);
+        document.addEventListener('selectstart', onSelect);
         return () => {
             document.removeEventListener('mousemove', onMouseMove);
             document.removeEventListener('mouseup', onMouseUp);
+            document.removeEventListener('selectstart', onSelect);
         };
     }, []);
     return (<div className={sc('', className)}
