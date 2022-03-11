@@ -14,6 +14,7 @@ const Scroll: React.FunctionComponent<ScrollProps> = (props) => {
     const innerRef = useRef<HTMLDivElement>(null);
     const [barHeight, setBarHeight] = useState(0);
     const [barTop, _setBarTop] = useState(0);
+    const [barVisible, setBarVisible] = useState(false);
     const setBarTop = (height: number) => {
         if (height < 0) return;
         const innerAllHeight = innerRef.current!.scrollHeight;
@@ -28,12 +29,18 @@ const Scroll: React.FunctionComponent<ScrollProps> = (props) => {
         const innerClientHeight = innerRef.current!.getBoundingClientRect().height;
         setBarHeight(innerClientHeight * innerClientHeight / innerAllHeight);
     }, []);
-
+    const refTimer = useRef<number|null>(null)
     const onScroll = () => {
         const innerAllHeight = innerRef.current!.scrollHeight;
         const innerClientHeight = innerRef.current!.getBoundingClientRect().height;
         const innerScrollHeight = innerRef.current!.scrollTop;
         setBarTop(innerScrollHeight * innerClientHeight / innerAllHeight);
+        setBarVisible(true)
+
+        if(refTimer.current!==null){
+            window.clearTimeout(refTimer.current)
+        }
+        refTimer.current = window.setTimeout(()=>{setBarVisible(false)},1000)
     };
 
     const refFirstBarTop = useRef(0);
@@ -79,6 +86,7 @@ const Scroll: React.FunctionComponent<ScrollProps> = (props) => {
         >
             {children}
         </div>
+        {barVisible &&
         <div className={sc('track')}>
             <div
                 className={sc('bar')}
@@ -86,6 +94,7 @@ const Scroll: React.FunctionComponent<ScrollProps> = (props) => {
                 onMouseDown={onMouseDown}
             />
         </div>
+        }
     </div>);
 
 };
