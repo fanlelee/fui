@@ -27,6 +27,7 @@
     border-radius: 3px;
   }
   &-pulling{
+    overflow: hidden;
     display: flex;
     width: 100%;
     justify-content: center;

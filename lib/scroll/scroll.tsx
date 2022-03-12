@@ -77,27 +77,39 @@ const Scroll: React.FunctionComponent<ScrollProps> = (props) => {
             document.removeEventListener('selectstart', onSelect);
         };
     }, []);
-
+    const [translateY, _setTranslateY] = useState(0);
+    const setTranslateY = (y: number) => {
+        if (y < 0) {y = 0;} else if (y > 150) {y = 150;}
+        _setTranslateY(y);
+    };
     const touchStartRef = useRef(0);
+    const pullingRef = useRef(false);
+    const pullingCountRef = useRef(0);
     const onTouchStart: TouchEventHandler = (e) => {
+        if (innerRef.current!.scrollTop !== 0) return;
+        pullingRef.current = true;
         touchStartRef.current = e.touches[0].clientY;
+        pullingCountRef.current = 0;
     };
     const onTouchMove: TouchEventHandler = (e) => {
-        const delta = touchStartRef.current - e.touches[0].clientY;
-        console.log(delta);
-        if (delta < 0) {
-            setPulling(true);
-            setTranslateY(translateY - delta);
-            touchStartRef.current = e.touches[0].clientY;
+        const delta = e.touches[0].clientY - touchStartRef.current;
+        pullingCountRef.current += 1;
+        if (pullingCountRef.current === 1 && delta < 0) {
+            pullingRef.current = false;
+            return;
         }
+        if (!pullingRef.current) return;
+
+        setTranslateY(translateY + delta);
+        touchStartRef.current = e.touches[0].clientY;
     };
     const onTouchEnd = () => {
-        setTranslateY(0);
-        setPulling(false);
+        if (pullingRef.current) {
+            setTranslateY(0);
+            pullingRef.current = false;
+        }
     };
 
-    const [translateY, setTranslateY] = useState(0);
-    const [pulling, setPulling] = useState(false);
     return (
         <div className={sc('', className)}
              {...rest}>
@@ -126,8 +138,10 @@ const Scroll: React.FunctionComponent<ScrollProps> = (props) => {
             }
             <div
                 className={sc('pulling')}
-                style={{display: pulling ? 'flex' : 'none', height: translateY}}>
-                <Icon name='loading'/>
+                style={{height: translateY}}>
+                {translateY === 150 ?
+                    <span>松开更新</span> :
+                    <Icon name='loading'/>}
             </div>
         </div>);
 
