@@ -2,6 +2,7 @@ import React, {HTMLAttributes, MouseEventHandler, TouchEventHandler, useEffect, 
 import {scopedClassMaker} from '../helpers/classes';
 import './scroll.scss';
 import scrollbarWidth from './scrollbar-width';
+import Icon from '../icon/icon';
 
 interface ScrollProps extends HTMLAttributes<HTMLDivElement> {
 }
@@ -85,13 +86,18 @@ const Scroll: React.FunctionComponent<ScrollProps> = (props) => {
         const delta = touchStartRef.current - e.touches[0].clientY;
         console.log(delta);
         if (delta < 0) {
+            setPulling(true);
             setTranslateY(translateY - delta);
             touchStartRef.current = e.touches[0].clientY;
         }
     };
-    const onTouchEnd = () => {setTranslateY(0);};
+    const onTouchEnd = () => {
+        setTranslateY(0);
+        setPulling(false);
+    };
 
     const [translateY, setTranslateY] = useState(0);
+    const [pulling, setPulling] = useState(false);
     return (
         <div className={sc('', className)}
              {...rest}>
@@ -118,6 +124,11 @@ const Scroll: React.FunctionComponent<ScrollProps> = (props) => {
                 />
             </div>
             }
+            <div
+                className={sc('pulling')}
+                style={{display: pulling ? 'flex' : 'none', height: translateY}}>
+                <Icon name='loading'/>
+            </div>
         </div>);
 
 };
