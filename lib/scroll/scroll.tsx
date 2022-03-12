@@ -5,12 +5,13 @@ import scrollbarWidth from './scrollbar-width';
 import Icon from '../icon/icon';
 
 interface ScrollProps extends HTMLAttributes<HTMLDivElement> {
+    onPull?: () => void
 }
 
 const sc = scopedClassMaker('scroll');
 
 const Scroll: React.FunctionComponent<ScrollProps> = (props) => {
-    const {className, children, ...rest} = props;
+    const {className,onPull, children, ...rest} = props;
 
     const innerRef = useRef<HTMLDivElement>(null);
     const [barHeight, setBarHeight] = useState(0);
@@ -107,6 +108,7 @@ const Scroll: React.FunctionComponent<ScrollProps> = (props) => {
         if (pullingRef.current) {
             setTranslateY(0);
             pullingRef.current = false;
+            onPull && onPull();
         }
     };
 
