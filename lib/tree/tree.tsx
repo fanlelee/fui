@@ -17,19 +17,24 @@ const sc = scopedClassMaker('tree');
 
 const Tree: React.FunctionComponent<TreeProps> = (props) => {
     const {className, sourceData, ...rest} = props;
+    const renderItem = (item: SourceDataItem, level = 1) => {
+        return (
+            <div
+                key={item.text}
+                className={sc({['level-' + level]: true})}
+                style={{marginLeft:level*10}}
+            >
+                {item.value}
+                {item.children?.map(sub => {
+                    return renderItem(sub, level + 1);
+                })}
+            </div>
+        );
+    };
     return (<>
         <div className={sc('', className)} {...rest}>
-            {sourceData.map((item,i) => {
-                return (
-                    <div key={i}>
-                        {item.value}
-                        {item.children&&item.children.map((child,j)=>{
-                            return (
-                                <div key={j}>{child.value}</div>
-                            )
-                        })}
-                    </div>
-                );
+            {sourceData.map((item) => {
+                return renderItem(item);
             })}
         </div>
     </>);

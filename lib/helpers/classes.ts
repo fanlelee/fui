@@ -1,7 +1,10 @@
 interface ClassToggles {
     [K: string]: boolean
 }
-
+//scopedClassMaker(componentName)('suffix')
+//scopedClassMaker(componentName)('')
+//scopedClassMaker(componentName)({'':true,'suffix':true})
+//scopedClassMaker(componentName)({'': true, 'suffix': true},'hi')
 const scopedClassMaker = (prefix: string) =>
     (name: string | ClassToggles, extra?: string) =>
         Object.entries(typeof name === 'string' ? {[name]: true} : name)
