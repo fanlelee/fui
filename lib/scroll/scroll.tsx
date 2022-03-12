@@ -1,4 +1,4 @@
-import React, {HTMLAttributes, MouseEventHandler, useEffect, useRef, useState} from 'react';
+import React, {HTMLAttributes, MouseEventHandler, TouchEventHandler, useEffect, useRef, useState} from 'react';
 import {scopedClassMaker} from '../helpers/classes';
 import './scroll.scss';
 import scrollbarWidth from './scrollbar-width';
@@ -29,18 +29,18 @@ const Scroll: React.FunctionComponent<ScrollProps> = (props) => {
         const innerClientHeight = innerRef.current!.getBoundingClientRect().height;
         setBarHeight(innerClientHeight * innerClientHeight / innerAllHeight);
     }, []);
-    const refTimer = useRef<number|null>(null)
+    const refTimer = useRef<number | null>(null);
     const onScroll = () => {
         const innerAllHeight = innerRef.current!.scrollHeight;
         const innerClientHeight = innerRef.current!.getBoundingClientRect().height;
         const innerScrollHeight = innerRef.current!.scrollTop;
         setBarTop(innerScrollHeight * innerClientHeight / innerAllHeight);
-        setBarVisible(true)
+        setBarVisible(true);
 
-        if(refTimer.current!==null){
-            window.clearTimeout(refTimer.current)
+        if (refTimer.current !== null) {
+            window.clearTimeout(refTimer.current);
         }
-        refTimer.current = window.setTimeout(()=>{setBarVisible(false)},1000)
+        refTimer.current = window.setTimeout(() => {setBarVisible(false);}, 1000);
     };
 
     const refFirstBarTop = useRef(0);
@@ -76,26 +76,49 @@ const Scroll: React.FunctionComponent<ScrollProps> = (props) => {
             document.removeEventListener('selectstart', onSelect);
         };
     }, []);
-    return (<div className={sc('', className)}
-                 {...rest}>
-        <div
-            className={sc('inner')}
-            style={{right: -scrollbarWidth()}}
-            ref={innerRef}
-            onScroll={onScroll}
-        >
-            {children}
-        </div>
-        {barVisible &&
-        <div className={sc('track')}>
-            <div
-                className={sc('bar')}
-                style={{height: barHeight, transform: `translateY(${barTop}px)`}}
-                onMouseDown={onMouseDown}
-            />
-        </div>
+
+    const touchStartRef = useRef(0);
+    const onTouchStart: TouchEventHandler = (e) => {
+        touchStartRef.current = e.touches[0].clientY;
+    };
+    const onTouchMove: TouchEventHandler = (e) => {
+        const delta = touchStartRef.current - e.touches[0].clientY;
+        console.log(delta);
+        if (delta < 0) {
+            setTranslateY(translateY - delta);
+            touchStartRef.current = e.touches[0].clientY;
         }
-    </div>);
+    };
+    const onTouchEnd = () => {setTranslateY(0);};
+
+    const [translateY, setTranslateY] = useState(0);
+    return (
+        <div className={sc('', className)}
+             {...rest}>
+            <div
+                className={sc('inner')}
+                style={{
+                    right: -scrollbarWidth(),
+                    transform: `translateY(${translateY}px)`
+                }}
+                ref={innerRef}
+                onScroll={onScroll}
+                onTouchStart={onTouchStart}
+                onTouchMove={onTouchMove}
+                onTouchEnd={onTouchEnd}
+            >
+                {children}
+            </div>
+            {barVisible &&
+            <div className={sc('track')}>
+                <div
+                    className={sc('bar')}
+                    style={{height: barHeight, transform: `translateY(${barTop}px)`}}
+                    onMouseDown={onMouseDown}
+                />
+            </div>
+            }
+        </div>);
 
 };
 export default Scroll;
