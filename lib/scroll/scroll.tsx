@@ -57,8 +57,7 @@ const Scroll: React.FunctionComponent<ScrollProps> = (props) => {
         if (refDragging.current) {
             const delta = e.clientY - refDownY.current;
             setBarTop(refFirstBarTop.current + delta);
-            const x = innerRef.current!.scrollHeight * (refFirstBarTop.current + delta) / innerRef.current!.getBoundingClientRect().height;
-            innerRef.current!.scrollTop = x;
+            innerRef.current!.scrollTop = innerRef.current!.scrollHeight * (refFirstBarTop.current + delta) / innerRef.current!.getBoundingClientRect().height;
         }
     };
     const onMouseUp = () => {
@@ -111,7 +110,6 @@ const Scroll: React.FunctionComponent<ScrollProps> = (props) => {
             onPull && onPull();
         }
     };
-
     return (
         <div className={sc('', className)}
              {...rest}>
