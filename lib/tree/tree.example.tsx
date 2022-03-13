@@ -21,17 +21,22 @@ const TreeExample: React.FunctionComponent = () => {
             ]
         }
     ])
-    const [selectedData,setSelectedData] = useState(['1.1','2.2','2'])
+    const [selected,setSelected] = useState(['1.1','2.2','2'])
     const onChange = (item:SourceDataItem,status:boolean)=>{
         if(status){
-            setSelectedData([...selectedData,item.value])
+            setSelected([...selected,item.value])
         }else {
-            setSelectedData(selectedData.filter(value => value!==item.value))
+            setSelected(selected.filter(value => value!==item.value))
         }
     }
 
     return (<>
-            <Tree sourceData={sourceData} selectedData = {selectedData} onChange={onChange}/>
+            <Tree
+                sourceData={sourceData}
+                selected = {selected}
+                onChange={onChange}
+                multiple={true}
+            />
     </>);
 }
 

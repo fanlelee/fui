@@ -8,15 +8,18 @@ export interface SourceDataItem {
     children?: SourceDataItem[]
 }
 
-interface TreeProps {
+type TreeProps = {
     className?: string
     sourceData: SourceDataItem[],
-    selectedData: string[],
-    onChange: (item:SourceDataItem,status:boolean) => void
-}
+    selected: string[],
+    onChange: (item: SourceDataItem, status: boolean) => void
+} & (
+    { selected: string[], multiple: true } |
+    { selected: string, multiple: false }
+    )
 
 const sc = scopedClassMaker('tree');
-const renderItem = (item: SourceDataItem, selectedData: string[],onChange:(item:SourceDataItem,status:boolean) => void, level = 1) => {
+const renderItem = (item: SourceDataItem, selected: string[], onChange: (item: SourceDataItem, status: boolean) => void, level = 1) => {
     return (
         <div
             key={item.text}
@@ -26,24 +29,24 @@ const renderItem = (item: SourceDataItem, selectedData: string[],onChange:(item:
             <div className={sc('item')} style={{paddingLeft: `${(level - 1) * 2}em`}}>
                 <input
                     type="checkbox"
-                    checked={selectedData.indexOf(item.value) >= 0}
-                    onChange={(e)=>onChange(item,e.target.checked)}
+                    checked={selected.indexOf(item.value) >= 0}
+                    onChange={(e) => onChange(item, e.target.checked)}
                 />
                 {item.text}
             </div>
             {item.children?.map(sub => {
-                return renderItem(sub, selectedData, onChange,level + 1);
+                return renderItem(sub, selected, onChange, level + 1);
             })}
         </div>
     );
 };
 const Tree: React.FunctionComponent<TreeProps> = (props) => {
-    const {className,onChange, selectedData, sourceData, ...rest} = props;
+    const {className, onChange, selected, sourceData, ...rest} = props;
 
     return (<>
         <div className={sc('', className)} {...rest}>
             {sourceData.map((item) => {
-                return renderItem(item, selectedData,onChange);
+                return renderItem(item, selected, onChange);
             })}
         </div>
     </>);
