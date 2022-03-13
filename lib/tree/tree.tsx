@@ -1,8 +1,8 @@
-import React from 'react';
+import React, {ChangeEventHandler} from 'react';
 import './tree.scss';
 import {scopedClassMaker} from '../helpers/classes';
 
-export interface SourceDataItem {
+interface SourceDataItem {
     text: string,
     value: string,
     children?: SourceDataItem[]
@@ -10,11 +10,18 @@ export interface SourceDataItem {
 
 type TreeProps = {
     className?: string
-    sourceData: SourceDataItem[],
-    onChange: (item: SourceDataItem, status: boolean) => void
+    sourceData: SourceDataItem[]
 } & (
-    { selected: string[], multiple: true } |
-    { selected: string, multiple?: false }
+    {
+        selected: string[],
+        multiple: true,
+        onChange: (newSelected: string[]) => void
+    } |
+    {
+        selected: string,
+        multiple?: false,
+        onChange: (newSelected: string) => void
+    }
     )
 
 const sc = scopedClassMaker('tree');
@@ -22,19 +29,30 @@ const sc = scopedClassMaker('tree');
 const Tree: React.FunctionComponent<TreeProps> = (props) => {
     const {className, onChange, selected, sourceData, multiple, ...rest} = props;
     const renderItem = (item: SourceDataItem, level = 1) => {
+        const onChangeInput:ChangeEventHandler<HTMLInputElement> = ( e) => {
+            const checked = e.target.checked
+            if (checked) {
+                multiple === true ? (onChange as (newSelected: string[]) => void)([...(selected as string[]), item.value]) :
+                    (onChange as (newSelected: string) => void)((item.value as string));
+            } else {
+                multiple ? (onChange as (newSelected: string[]) => void)((selected as string[]).filter(value => value !== item.value)) :
+                    (onChange as (newSelected: string) => void)('');
+            }
+
+        };
         return (
             <div
                 key={item.text}
                 className={sc({['level-' + level]: true})}
             >
-                <div className={sc('item')} style={{paddingLeft: `${(level - 1) * 2}em`}}>
+                <label className={sc('item')} style={{paddingLeft: `${(level - 1) * 2}em`}}>
                     <input
                         type="checkbox"
                         checked={multiple ? selected.indexOf(item.value) >= 0 : selected === item.value}
-                        onChange={(e) => onChange(item, e.target.checked)}
+                        onChange={onChangeInput}
                     />
                     {item.text}
-                </div>
+                </label>
                 {item.children?.map(sub => {
                     return renderItem(sub, level + 1);
                 })}

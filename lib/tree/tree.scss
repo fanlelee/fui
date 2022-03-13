@@ -1,6 +1,7 @@
 @import "../_helper.scss";
 .fui-tree{
 &-item{
+  display: block;
   &:hover{
     background-color: $select-background-color;
   }
