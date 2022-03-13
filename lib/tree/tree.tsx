@@ -10,31 +10,35 @@ interface SourceDataItem {
 
 interface TreeProps {
     className?: string
-    sourceData: SourceDataItem[]
+    sourceData: SourceDataItem[],
+    selectedData:string[]
 }
 
 const sc = scopedClassMaker('tree');
+const renderItem = (item: SourceDataItem,selectedData:string[], level = 1) => {
+    return (
+        <div
+            key={item.text}
+            className={sc({['level-' + level]: true})}
 
-const Tree: React.FunctionComponent<TreeProps> = (props) => {
-    const {className, sourceData, ...rest} = props;
-    const renderItem = (item: SourceDataItem, level = 1) => {
-        return (
-            <div
-                key={item.text}
-                className={sc({['level-' + level]: true})}
-
-            >
-                <div className={sc('item')} style={{paddingLeft:level*10}}>{item.value}</div>
-                {item.children?.map(sub => {
-                    return renderItem(sub, level + 1);
-                })}
+        >
+            <div className={sc('item')} style={{paddingLeft:`${(level-1)*2}em`}}>
+                <input type="checkbox" checked={selectedData.indexOf(item.value)>=0}/>
+                {item.text}
             </div>
-        );
-    };
+            {item.children?.map(sub => {
+                return renderItem(sub, selectedData,level + 1);
+            })}
+        </div>
+    );
+};
+const Tree: React.FunctionComponent<TreeProps> = (props) => {
+    const {className,selectedData, sourceData, ...rest} = props;
+
     return (<>
         <div className={sc('', className)} {...rest}>
             {sourceData.map((item) => {
-                return renderItem(item);
+                return renderItem(item,selectedData);
             })}
         </div>
     </>);

@@ -8,22 +8,22 @@ const TreeExample: React.FunctionComponent = () => {
             text:'一',
             value:'1',
             children:[
-                {text:'一的一', value:'1.1'},
-                {text:'一的二', value:'1.2'}
+                {text:'一.一', value:'1.1'},
+                {text:'一.二', value:'1.2'}
             ]
         },
         {
             text:'二',
             value:'2',
             children:[
-                {text:'二的一', value:'2.1'},
-                {text:'二的二', value:'2.2'}
+                {text:'二.一', value:'2.1'},
+                {text:'二.二', value:'2.2'}
             ]
         }
     ])
 
     return (<>
-            <Tree sourceData={sourceData}/>
+            <Tree sourceData={sourceData} selectedData = {['1.1','2.2','2']}/>
     </>);
 }
 
