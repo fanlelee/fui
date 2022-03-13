@@ -22,9 +22,9 @@ const Tree: React.FunctionComponent<TreeProps> = (props) => {
             <div
                 key={item.text}
                 className={sc({['level-' + level]: true})}
-                style={{marginLeft:level*10}}
+
             >
-                {item.value}
+                <div className={sc('item')} style={{paddingLeft:level*10}}>{item.value}</div>
                 {item.children?.map(sub => {
                     return renderItem(sub, level + 1);
                 })}
