@@ -8,11 +8,7 @@ export interface SourceDataItem {
     value: string,
     children?: SourceDataItem[]
 }
-
-type TreeProps = {
-    className?: string
-    sourceData: SourceDataItem[]
-} & (
+export type TreeData = (
     {
         selected: string[],
         multiple: true,
@@ -24,6 +20,10 @@ type TreeProps = {
         onChange: (newSelected: string) => void
     }
     )
+type TreeProps = {
+    className?: string
+    sourceData: SourceDataItem[]
+} & TreeData
 
 const sc = scopedClassMaker('tree');
 
@@ -33,7 +33,7 @@ const Tree: React.FunctionComponent<TreeProps> = (props) => {
     return (<>
         <div className={sc('', className)} {...rest}>
             {sourceData.map((item) =>
-                <TreeItem level={1} parentProps={{onChange, selected,item, multiple}}/>
+                <TreeItem key={item.value} level={1} parentProps={({onChange, selected, multiple} as TreeData)} item={item}/>
             )}
         </div>
     </>);

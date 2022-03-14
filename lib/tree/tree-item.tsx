@@ -1,16 +1,18 @@
 import React, {ChangeEventHandler, useState} from 'react';
 import {scopedClassMaker} from '../helpers/classes';
-import {SourceDataItem} from './tree'
+import {SourceDataItem,TreeData} from './tree'
 
 const sc = scopedClassMaker('tree');
 
 interface TreeProps {
-    parentProps: any,
-    level: number
+    parentProps: TreeData,
+    level: number,
+    item:SourceDataItem
 }
 
 const TreeItem: React.FC<TreeProps> = (props) => {
-    const {item, multiple, onChange, selected} = props.parentProps;
+    const {multiple, onChange, selected} = props.parentProps;
+    const {item} = props
     const onChangeInput: ChangeEventHandler<HTMLInputElement> = (e) => {
         const checked = e.target.checked;
         if (checked) {
@@ -22,7 +24,7 @@ const TreeItem: React.FC<TreeProps> = (props) => {
         }
 
     };
-    const [collapse, setCollapse] = useState(true);
+    const [collapse, setCollapse] = useState(false);
     return (
         <div
             key={item.text}
@@ -54,7 +56,7 @@ const TreeItem: React.FC<TreeProps> = (props) => {
 
             </label>
             {item.children?.map((sub:SourceDataItem) =>
-                <TreeItem level={props.level + 1} parentProps={{...props.parentProps, item: sub}}/>
+                <TreeItem key={sub.value} level={props.level + 1} item={sub} parentProps={props.parentProps}/>
             )}
         </div>
     );
