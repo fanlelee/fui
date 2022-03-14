@@ -1,9 +1,12 @@
 @import "../_helper.scss";
-.fui-tree{
-&-item{
-  display: block;
-  &:hover{
-    background-color: $select-background-color;
+.fui-tree {
+  &-item {
+    display: block;
+    &:hover {
+      background-color: $select-background-color;
+    }
   }
-}
+  &-collapse{
+    >:not(.fui-tree-item){height: 0;overflow: hidden;}
+  }
 }

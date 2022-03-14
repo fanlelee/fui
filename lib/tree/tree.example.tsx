@@ -9,7 +9,10 @@ const TreeExample: React.FunctionComponent = () => {
             value: '1',
             children: [
                 {text: '一.一', value: '1.1'},
-                {text: '一.二', value: '1.2'}
+                {text: '一.二', value: '1.2',children:[
+                        {text: '一.二.一', value: '1.2.1'},
+                        {text: '一.二.二', value: '1.2.2'}
+                    ]}
             ]
         },
         {
