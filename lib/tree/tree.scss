@@ -6,7 +6,26 @@
       background-color: $select-background-color;
     }
   }
-  &-collapse{
-    >:not(.fui-tree-item){height: 0;overflow: hidden;}
+  &-collapse-icon {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 0.5em;
+    svg {
+      width: .8em;
+      height: .8em;
+      transition: transform 300ms;
+    }
+    &-down {
+      transform: rotate(-90deg);
+    }
+  }
+  &-collapse {
+    .fui-tree-children {
+      height: 0;overflow: hidden;transition: height 1s;
+    }
+  }
+  &-text{
+    margin-left: 0.3em;
   }
 }

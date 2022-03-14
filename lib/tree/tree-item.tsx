@@ -1,7 +1,7 @@
 import React, {ChangeEventHandler, useState} from 'react';
 import {scopedClassMaker} from '../helpers/classes';
 import {SourceDataItem, TreeData} from './tree';
-import useUpdate from '../hooks/useUpdate';
+import Icon from '../icon/icon';
 
 const sc = scopedClassMaker('tree');
 
@@ -15,11 +15,8 @@ const TreeItem: React.FC<TreeProps> = (props) => {
     const {multiple, onChange, selected} = props.parentProps;
     const {item} = props;
 
-    const [collapse, setCollapse] = useState(false);
+    const [collapse, setCollapse] = useState(true);
 
-
-
-    useUpdate(collapse, () => console.log('collapse动了'));
     const onChangeInput: ChangeEventHandler<HTMLInputElement> = (e) => {
         const checked = e.target.checked;
         if (checked) {
@@ -47,23 +44,27 @@ const TreeItem: React.FC<TreeProps> = (props) => {
                     checked={multiple ? selected.indexOf(item.value) >= 0 : selected === item.value}
                     onChange={onChangeInput}
                 />
-                {item.text}
+                <span className={sc('text')}>{item.text}</span>
                 {
-                    item.children && (collapse ?
-                        <span onClick={(e) => {
+                    item.children &&
+                    <span
+                        className={sc('collapse-icon')}
+                        onClick={(e) => {
                             e.preventDefault();
                             setCollapse(!collapse);
-                        }}>+</span> :
-                        <span onClick={(e) => {
-                            e.preventDefault();
-                            setCollapse(!collapse);
-                        }}>-</span>)
+                        }}
+                    >
+                        <Icon name='collapse' className={sc(`collapse-icon-${collapse ? 'up' : 'down'}`)}/>
+                    </span>
                 }
 
             </label>
-            {item.children?.map((sub: SourceDataItem) =>
-                <TreeItem key={sub.value} level={props.level + 1} item={sub} parentProps={props.parentProps}/>
-            )}
+            {item.children &&
+            <div className={sc('children')}>
+                {item.children.map((sub: SourceDataItem) =>
+                    <TreeItem key={sub.value} level={props.level + 1} item={sub} parentProps={props.parentProps}/>
+                )}
+            </div>}
         </div>
     );
 };
