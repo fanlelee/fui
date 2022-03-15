@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import ReactDOM from 'react-dom';
 import './citySelect.scss';
 import {scopedClassMaker} from '../helpers/classes';
@@ -11,25 +11,29 @@ interface CitySelectProps {
 }
 
 const sc = scopedClassMaker('citySelect');
+interface CityContext {
+    map:{ [key: string]: string[] }
+}
+const MapContext = React.createContext<CityContext>({map:{}})
 const CitySelect: React.FunctionComponent<CitySelectProps> = (props) => {
     const [dialogVisible, setDialogVisible] = useState(true);
-    let map: { [key: string]: string[] } = {};
+    const map: CityContext['map'] = {};
+
     props.cityList.map(city => {
         const letter = pinyin(city, {style: pinyin.STYLE_NORMAL})[0][0].substr(0, 1);
         map[letter] = map[letter] || [];
         map[letter].push(city);
     });
 
-    console.log(map);
-
-    return (<>
+    return (<MapContext.Provider value={{map}}>
         <div className={sc('')} onClick={() => {setDialogVisible(true);}}>{props.children}</div>
         {dialogVisible && <Dialog onClose={() => setDialogVisible(false)}/>}
-    </>);
+    </MapContext.Provider>);
 };
 
 const dsc = scopedClassMaker('citySelect-dialog');
 const Dialog: React.FC<{ onClose: () => void }> = (props) => {
+    const {map} = useContext(MapContext)
     return ReactDOM.createPortal((
             <div className={dsc('')}>
                 <header className={dsc('header')}>
@@ -40,7 +44,9 @@ const Dialog: React.FC<{ onClose: () => void }> = (props) => {
                     <CurrentLocation/>
                     <div className={dsc('cityList')}>
                         <h3>全部城市</h3>
-
+                        <ol className={dsc('city-index')}>
+                            {Object.keys(map).sort()}
+                        </ol>
                     </div>
                 </div>
             </div>
