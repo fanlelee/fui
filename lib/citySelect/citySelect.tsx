@@ -44,8 +44,8 @@ const Dialog: React.FC<{ onClose: () => void }> = (props) => {
                     <CurrentLocation/>
                     <div className={dsc('cityList')}>
                         <h3>全部城市</h3>
-                        <ol className={dsc('city-index')}>
-                            {Object.keys(map).sort()}
+                        <ol className={dsc('cityIndex')}>
+                            {Object.keys(map).sort().map(index=><li key={index}>{index}</li>)}
                         </ol>
                     </div>
                 </div>
