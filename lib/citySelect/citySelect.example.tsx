@@ -1,10 +1,10 @@
 import React from 'react';
 import CitySelect from './citySelect';
 
-
+import cityList from './cityList';
 const CitySelectExample: React.FunctionComponent = () => {
     return (<>
-        <CitySelect>选择城市</CitySelect>
+        <CitySelect cityList = {cityList}>选择城市</CitySelect>
     </>);
 };
 

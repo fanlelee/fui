@@ -4,15 +4,30 @@ import './citySelect.scss';
 import {scopedClassMaker} from '../helpers/classes';
 import Icon from '../icon/icon';
 
-const sc = scopedClassMaker('citySelect');
+const pinyin = require('pinyin');
 
-const CitySelect: React.FunctionComponent = (props) => {
+interface CitySelectProps {
+    cityList: string[]
+}
+
+const sc = scopedClassMaker('citySelect');
+const CitySelect: React.FunctionComponent<CitySelectProps> = (props) => {
     const [dialogVisible, setDialogVisible] = useState(true);
+    let map: { [key: string]: string[] } = {};
+    props.cityList.map(city => {
+        const letter = pinyin(city, {style: pinyin.STYLE_NORMAL})[0][0].substr(0, 1);
+        map[letter] = map[letter] || [];
+        map[letter].push(city);
+    });
+
+    console.log(map);
+
     return (<>
         <div className={sc('')} onClick={() => {setDialogVisible(true);}}>{props.children}</div>
         {dialogVisible && <Dialog onClose={() => setDialogVisible(false)}/>}
     </>);
 };
+
 const dsc = scopedClassMaker('citySelect-dialog');
 const Dialog: React.FC<{ onClose: () => void }> = (props) => {
     return ReactDOM.createPortal((
@@ -34,24 +49,24 @@ const Dialog: React.FC<{ onClose: () => void }> = (props) => {
 };
 
 const CurrentLocation: React.FC = () => {
-    const [city,setCity] = useState<string>('加载中...');
-    useEffect(()=>{
-        const request = new XMLHttpRequest()
-        request.open('get','http://ip-api.com/json/?lang=zh-CN')
-        request.onload = ()=>{
-            if((request.status>=200 && request.status<300)
-                || request.status===304){
+    const [city, setCity] = useState<string>('加载中...');
+    useEffect(() => {
+        const request = new XMLHttpRequest();
+        request.open('get', 'http://ip-api.com/json/?lang=zh-CN');
+        request.onload = () => {
+            if ((request.status >= 200 && request.status < 300)
+                || request.status === 304) {
                 setCity(JSON.parse(request.responseText).city);
-            }else {
+            } else {
                 console.log(request.status);
             }
-        }
-        request.onerror = ()=>{
+        };
+        request.onerror = () => {
             console.log('error');
-            setCity('获取失败')
-        }
-        request.send()
-    },[])
+            setCity('获取失败');
+        };
+        request.send();
+    }, []);
     return (
         <div className={dsc('location')}>
             定位城市:
