@@ -7,6 +7,34 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: red;
+    background-color: #f0efed;
+    &-header{
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 17px;
+      background-image: linear-gradient(135deg, #FFD000 0%, #FFBD00 100%);
+      line-height: 50px;
+    }
+    &-back{
+      position: absolute;
+      left:0;
+      display: inline-flex;
+    }
+    &-cityBox{padding: 10px;}
+    &-location{
+      background-color: #fff;
+      border-radius: 4px;
+      line-height: 40px;
+      padding: 0 8px;
+      display: flex;
+      justify-content: flex-start;
+      span{
+        display: inline-flex;
+        align-items: center;
+        margin-left: .5em;
+      }
+    }
   }
 }
