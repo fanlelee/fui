@@ -9,6 +9,7 @@ import Layout, {Header, Aside, Content, Footer} from './lib/layout/layout';
 import FormExample from './lib/form/form.example';
 import ScrollExample from './lib/scroll/scroll.example';
 import TreeExample from './lib/tree/tree.example';
+import CitySelectExample from './lib/citySelect/citySelect.example';
 
 
 ReactDOM.render(
@@ -28,6 +29,7 @@ ReactDOM.render(
                         <li><NavLink to='/form'>form组件</NavLink></li>
                         <li><NavLink to='/scroll'>scroll组件</NavLink></li>
                         <li><NavLink to='/tree'>tree组件</NavLink></li>
+                        <li><NavLink to='/citySelect'>citySelect组件</NavLink></li>
                     </ul>
                 </Aside>
                 <Content className="site-main">
@@ -38,6 +40,7 @@ ReactDOM.render(
                         <Route path='/form' element={<FormExample/>}/>
                         <Route path='/scroll' element={<ScrollExample/>}/>
                         <Route path='/tree' element={<TreeExample/>}/>
+                        <Route path='/citySelect' element={<CitySelectExample/>}/>
                     </Routes>
                 </Content>
             </Layout>
