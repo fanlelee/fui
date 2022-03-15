@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import ReactDOM from 'react-dom';
 import './citySelect.scss';
 import {scopedClassMaker} from '../helpers/classes';
@@ -22,13 +22,7 @@ const Dialog: React.FC<{ onClose: () => void }> = (props) => {
                     选择城市
                 </header>
                 <div className={dsc('cityBox')}>
-                    <div className={dsc('location')}>
-                        定位城市:
-                        <span>
-                        <Icon name='location' style={{height: '1em', width: '1em'}}/>
-                        成都
-                        </span>
-                    </div>
+                    <CurrentLocation/>
                     <div className={dsc('cityList')}>
                         <h3>全部城市</h3>
 
@@ -37,6 +31,37 @@ const Dialog: React.FC<{ onClose: () => void }> = (props) => {
             </div>
         ), document.body
     );
+};
+
+const CurrentLocation: React.FC = () => {
+    const [city,setCity] = useState<string>('加载中...');
+    useEffect(()=>{
+        const request = new XMLHttpRequest()
+        request.open('get','http://ip-api.com/json/?lang=zh-CN')
+        request.onload = ()=>{
+            if((request.status>=200 && request.status<300)
+                || request.status===304){
+                setCity(JSON.parse(request.responseText).city);
+            }else {
+                console.log(request.status);
+            }
+        }
+        request.onerror = ()=>{
+            console.log('error');
+            setCity('获取失败')
+        }
+        request.send()
+    },[])
+    return (
+        <div className={dsc('location')}>
+            定位城市:
+            <span>
+            <Icon name='location' style={{height: '1em', width: '1em'}}/>
+                {city}
+        </span>
+        </div>
+    );
+
 };
 
 export default CitySelect;
