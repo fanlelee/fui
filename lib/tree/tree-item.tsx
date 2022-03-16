@@ -2,8 +2,8 @@ import React, {ChangeEventHandler, useState} from 'react';
 import {scopedClassMaker} from '../helpers/classes';
 import {SourceDataItem, TreeData} from './tree';
 import Icon from '../icon/icon';
+import flatten from '../helpers/flatten';
 
-const sc = scopedClassMaker('tree');
 
 interface TreeProps {
     parentProps: TreeData,
@@ -11,19 +11,33 @@ interface TreeProps {
     item: SourceDataItem
 }
 
+const sc = scopedClassMaker('tree');
 const TreeItem: React.FC<TreeProps> = (props) => {
     const {multiple, onChange, selected} = props.parentProps;
     const {item} = props;
 
     const [collapse, setCollapse] = useState(true);
-
+    const selectedChildren = (array: SourceDataItem): string[] => {
+        return flatten(array.children?.map(i => {
+            return [array.value,i.value, selectedChildren(i)];}));
+    };
     const onChangeInput: ChangeEventHandler<HTMLInputElement> = (e) => {
         const checked = e.target.checked;
+        console.log(selectedChildren(item),'1');
+        console.log(selected,'2');
         if (checked) {
-            multiple === true ? (onChange as (newSelected: string[]) => void)([...(selected as string[]), item.value]) :
+            multiple === true ?
+                (onChange as (newSelected: string[]) => void)([
+                    ...(selected as string[]),
+                    ...selectedChildren(item)]
+                ) :
                 (onChange as (newSelected: string) => void)((item.value as string));
         } else {
-            multiple ? (onChange as (newSelected: string[]) => void)((selected as string[]).filter(value => value !== item.value)) :
+            multiple ?
+                (onChange as (newSelected: string[]) => void)((selected as string[]).filter(value =>
+                    value !== item.value &&
+                    selectedChildren(item).indexOf(value) === -1)
+                ) :
                 (onChange as (newSelected: string) => void)('');
         }
     };

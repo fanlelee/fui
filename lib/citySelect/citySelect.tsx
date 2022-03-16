@@ -44,7 +44,6 @@ const CitySelect: React.FunctionComponent<CitySelectProps> = (props) => {
 const dsc = scopedClassMaker('citySelect-dialog');
 const Dialog: React.FC<{ onClose: () => void }> = (props) => {
     const {map, onChoose, setDialogVisible} = useContext(MapContext);
-    console.log(Object.entries(map));
     return ReactDOM.createPortal((
             <div className={dsc('')}>
                 <header className={dsc('header')}>
