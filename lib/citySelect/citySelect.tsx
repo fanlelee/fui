@@ -11,16 +11,18 @@ interface CitySelectProps {
 }
 
 const sc = scopedClassMaker('citySelect');
+
 interface CityContext {
-    map:{ [key: string]: string[] }
+    map: { [key: string]: string[] }
 }
-const MapContext = React.createContext<CityContext>({map:{}})
+
+const MapContext = React.createContext<CityContext>({map: {}});
 const CitySelect: React.FunctionComponent<CitySelectProps> = (props) => {
     const [dialogVisible, setDialogVisible] = useState(true);
     const map: CityContext['map'] = {};
 
     props.cityList.map(city => {
-        const letter = pinyin(city, {style: pinyin.STYLE_NORMAL})[0][0].substr(0, 1);
+        const letter = pinyin(city, {style: pinyin.STYLE_NORMAL})[0][0].substr(0, 1).toUpperCase();
         map[letter] = map[letter] || [];
         map[letter].push(city);
     });
@@ -33,7 +35,8 @@ const CitySelect: React.FunctionComponent<CitySelectProps> = (props) => {
 
 const dsc = scopedClassMaker('citySelect-dialog');
 const Dialog: React.FC<{ onClose: () => void }> = (props) => {
-    const {map} = useContext(MapContext)
+    const {map} = useContext(MapContext);
+    console.log(Object.entries(map));
     return ReactDOM.createPortal((
             <div className={dsc('')}>
                 <header className={dsc('header')}>
@@ -44,9 +47,18 @@ const Dialog: React.FC<{ onClose: () => void }> = (props) => {
                     <CurrentLocation/>
                     <div className={dsc('cityList')}>
                         <h3>全部城市</h3>
-                        <ol className={dsc('cityIndex')}>
-                            {Object.keys(map).sort().map(index=><li key={index}>{index}</li>)}
+                        <ol className={dsc('cityIndexList')}>
+                            {Object.keys(map).sort().map(index => <li key={index}>{index}</li>)}
                         </ol>
+                        {Object.entries(map).map((list, i) =>
+                            <ul key={i} className={dsc('cities')}>
+                                <li className={dsc('index')} key={list[0]}>{list[0]}</li>
+                                {list[1].map(city =>
+                                    <li className={dsc('city')} key={city}>{city}</li>
+                                )}
+                                <li className={dsc('city')}>更多《</li>
+                            </ul>
+                        )}
                     </div>
                 </div>
             </div>
