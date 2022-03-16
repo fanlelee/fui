@@ -35,7 +35,7 @@ const CitySelect: React.FunctionComponent<CitySelectProps> = (props) => {
     });
 
 
-    return (<MapContext.Provider value={{map, onChoose: props.onChoose,setDialogVisible}}>
+    return (<MapContext.Provider value={{map, onChoose: props.onChoose, setDialogVisible}}>
         <div className={sc('')} onClick={() => {setDialogVisible(true);}}>{props.children}</div>
         {dialogVisible && <Dialog onClose={() => setDialogVisible(false)}/>}
     </MapContext.Provider>);
@@ -43,7 +43,7 @@ const CitySelect: React.FunctionComponent<CitySelectProps> = (props) => {
 
 const dsc = scopedClassMaker('citySelect-dialog');
 const Dialog: React.FC<{ onClose: () => void }> = (props) => {
-    const {map, onChoose,setDialogVisible} = useContext(MapContext);
+    const {map, onChoose, setDialogVisible} = useContext(MapContext);
     console.log(Object.entries(map));
     return ReactDOM.createPortal((
             <div className={dsc('')}>
@@ -56,14 +56,23 @@ const Dialog: React.FC<{ onClose: () => void }> = (props) => {
                     <div className={dsc('cityList')}>
                         <h3>全部城市</h3>
                         <ol className={dsc('cityIndexList')}>
-                            {Object.keys(map).sort().map(index => <li key={index}>{index}</li>)}
+                            {Object.keys(map).sort().map(letter =>
+                                <li key={letter}
+                                    onClick={() =>
+                                        document.querySelector(`#fui-citySelect-dialog-letter-${letter}`)!.scrollIntoView()
+                                    }
+                                >{letter}</li>
+                            )}
                         </ol>
                         {Object.entries(map).map((list, i) =>
                             <ul key={i} className={dsc('cities')}>
-                                <li className={dsc('index')} key={list[0]}>{list[0]}</li>
+                                <li id={dsc(`letter-${list[0]}`)} className={dsc('index')} key={list[0]}>{list[0]}</li>
                                 {list[1].map(city =>
                                     <li className={dsc('city')} key={city}
-                                        onClick={() => {setDialogVisible(false);onChoose(city);}}>
+                                        onClick={() => {
+                                            setDialogVisible(false);
+                                            onChoose(city);
+                                        }}>
                                         {city}
                                     </li>
                                 )}
