@@ -1,4 +1,4 @@
-import React, {useContext, useEffect, useState} from 'react';
+import React, {Dispatch, SetStateAction, useContext, useEffect, useState} from 'react';
 import ReactDOM from 'react-dom';
 import './citySelect.scss';
 import {scopedClassMaker} from '../helpers/classes';
@@ -7,16 +7,23 @@ import Icon from '../icon/icon';
 const pinyin = require('pinyin');
 
 interface CitySelectProps {
-    cityList: string[]
+    cityList: string[];
+    onChoose: (K: string) => void;
 }
 
 const sc = scopedClassMaker('citySelect');
 
 interface CityContext {
-    map: { [key: string]: string[] }
+    map: { [key: string]: string[] };
+    onChoose: (K: string) => void;
+    setDialogVisible: Dispatch<SetStateAction<boolean>>
 }
 
-const MapContext = React.createContext<CityContext>({map: {}});
+const MapContext = React.createContext<CityContext>({
+    map: {},
+    onChoose: () => {},
+    setDialogVisible: () => {}
+});
 const CitySelect: React.FunctionComponent<CitySelectProps> = (props) => {
     const [dialogVisible, setDialogVisible] = useState(true);
     const map: CityContext['map'] = {};
@@ -27,7 +34,8 @@ const CitySelect: React.FunctionComponent<CitySelectProps> = (props) => {
         map[letter].push(city);
     });
 
-    return (<MapContext.Provider value={{map}}>
+
+    return (<MapContext.Provider value={{map, onChoose: props.onChoose,setDialogVisible}}>
         <div className={sc('')} onClick={() => {setDialogVisible(true);}}>{props.children}</div>
         {dialogVisible && <Dialog onClose={() => setDialogVisible(false)}/>}
     </MapContext.Provider>);
@@ -35,7 +43,7 @@ const CitySelect: React.FunctionComponent<CitySelectProps> = (props) => {
 
 const dsc = scopedClassMaker('citySelect-dialog');
 const Dialog: React.FC<{ onClose: () => void }> = (props) => {
-    const {map} = useContext(MapContext);
+    const {map, onChoose,setDialogVisible} = useContext(MapContext);
     console.log(Object.entries(map));
     return ReactDOM.createPortal((
             <div className={dsc('')}>
@@ -54,7 +62,10 @@ const Dialog: React.FC<{ onClose: () => void }> = (props) => {
                             <ul key={i} className={dsc('cities')}>
                                 <li className={dsc('index')} key={list[0]}>{list[0]}</li>
                                 {list[1].map(city =>
-                                    <li className={dsc('city')} key={city}>{city}</li>
+                                    <li className={dsc('city')} key={city}
+                                        onClick={() => {setDialogVisible(false);onChoose(city);}}>
+                                        {city}
+                                    </li>
                                 )}
                                 <li className={dsc('city')}>更多《</li>
                             </ul>
