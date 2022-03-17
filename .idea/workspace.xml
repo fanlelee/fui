@@ -1,0 +1,478 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="e5e71871-25b5-46f2-88a3-d607298f2dc3" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="TypeScript JSX File" />
+        <option value="TypeScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="hiddenUrls">
+      <set>
+        <option value="https://github.com/fanlelee/fui" />
+      </set>
+    </option>
+  </component>
+  <component name="ProjectId" id="1yBCcbWPATC7jtXqhcol3WLyBK6" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/lib/citySelect" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
+    <property name="ts.external.directory.path" value="$PROJECT_DIR$/node_modules/typescript/lib" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/lib/citySelect" />
+      <recent name="$PROJECT_DIR$/lib/tree" />
+      <recent name="$PROJECT_DIR$/lib/form" />
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/lib/layout" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/lib/icon/icons" />
+      <recent name="$PROJECT_DIR$/lib" />
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/lib/icon" />
+      <recent name="$PROJECT_DIR$/icon" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="e5e71871-25b5-46f2-88a3-d607298f2dc3" name="Default Changelist" comment="" />
+      <created>1631715674725</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1631715674725</updated>
+      <workItem from="1631715675939" duration="20500000" />
+      <workItem from="1634653368044" duration="738000" />
+      <workItem from="1634654223056" duration="1567000" />
+      <workItem from="1638092732313" duration="9352000" />
+      <workItem from="1640587049005" duration="7677000" />
+      <workItem from="1644809208040" duration="296602000" />
+    </task>
+    <task id="LOCAL-00067" summary="form组件用table布局">
+      <created>1646294243529</created>
+      <option name="number" value="00067" />
+      <option name="presentableId" value="LOCAL-00067" />
+      <option name="project" value="LOCAL" />
+      <updated>1646294243529</updated>
+    </task>
+    <task id="LOCAL-00068" summary="form组件加样式">
+      <created>1646299237627</created>
+      <option name="number" value="00068" />
+      <option name="presentableId" value="LOCAL-00068" />
+      <option name="project" value="LOCAL" />
+      <updated>1646299237627</updated>
+    </task>
+    <task id="LOCAL-00069" summary="添加button组件">
+      <created>1646299262025</created>
+      <option name="number" value="00069" />
+      <option name="presentableId" value="LOCAL-00069" />
+      <option name="project" value="LOCAL" />
+      <updated>1646299262025</updated>
+    </task>
+    <task id="LOCAL-00070" summary="form组件将button放入table布局里面">
+      <created>1646299667034</created>
+      <option name="number" value="00070" />
+      <option name="presentableId" value="LOCAL-00070" />
+      <option name="project" value="LOCAL" />
+      <updated>1646299667034</updated>
+    </task>
+    <task id="LOCAL-00071" summary="form组件展示报错信息">
+      <created>1646319272353</created>
+      <option name="number" value="00071" />
+      <option name="presentableId" value="LOCAL-00071" />
+      <option name="project" value="LOCAL" />
+      <updated>1646319272353</updated>
+    </task>
+    <task id="LOCAL-00072" summary="form组件报错信息添加errorsDisplayMode">
+      <created>1646319746462</created>
+      <option name="number" value="00072" />
+      <option name="presentableId" value="LOCAL-00072" />
+      <option name="project" value="LOCAL" />
+      <updated>1646319746462</updated>
+    </task>
+    <task id="LOCAL-00073" summary="validator校验器实现异步校验">
+      <created>1646713619978</created>
+      <option name="number" value="00073" />
+      <option name="presentableId" value="LOCAL-00073" />
+      <option name="project" value="LOCAL" />
+      <updated>1646713619978</updated>
+    </task>
+    <task id="LOCAL-00074" summary="validator校验器实现异步校验优化">
+      <created>1646714378371</created>
+      <option name="number" value="00074" />
+      <option name="presentableId" value="LOCAL-00074" />
+      <option name="project" value="LOCAL" />
+      <updated>1646714378371</updated>
+    </task>
+    <task id="LOCAL-00075" summary="确保Promise.all的Promise数组都fulfilled">
+      <created>1646729510585</created>
+      <option name="number" value="00075" />
+      <option name="presentableId" value="LOCAL-00075" />
+      <option name="project" value="LOCAL" />
+      <updated>1646729510586</updated>
+    </task>
+    <task id="LOCAL-00076" summary="新建scroll组件">
+      <created>1646814860058</created>
+      <option name="number" value="00076" />
+      <option name="presentableId" value="LOCAL-00076" />
+      <option name="project" value="LOCAL" />
+      <updated>1646814860058</updated>
+    </task>
+    <task id="LOCAL-00077" summary="scroll组件添加样式，隐藏原来的滚动条">
+      <created>1646815558650</created>
+      <option name="number" value="00077" />
+      <option name="presentableId" value="LOCAL-00077" />
+      <option name="project" value="LOCAL" />
+      <updated>1646815558650</updated>
+    </task>
+    <task id="LOCAL-00078" summary="动态获取滚动条宽度">
+      <created>1646816351280</created>
+      <option name="number" value="00078" />
+      <option name="presentableId" value="LOCAL-00078" />
+      <option name="project" value="LOCAL" />
+      <updated>1646816351280</updated>
+    </task>
+    <task id="LOCAL-00079" summary="获取滚动条高度">
+      <created>1646834304262</created>
+      <option name="number" value="00079" />
+      <option name="presentableId" value="LOCAL-00079" />
+      <option name="project" value="LOCAL" />
+      <updated>1646834304262</updated>
+    </task>
+    <task id="LOCAL-00080" summary="动态获取滚动位置高度">
+      <created>1646834753153</created>
+      <option name="number" value="00080" />
+      <option name="presentableId" value="LOCAL-00080" />
+      <option name="project" value="LOCAL" />
+      <updated>1646834753153</updated>
+    </task>
+    <task id="LOCAL-00081" summary="添加滚动条样式">
+      <created>1646834980725</created>
+      <option name="number" value="00081" />
+      <option name="presentableId" value="LOCAL-00081" />
+      <option name="project" value="LOCAL" />
+      <updated>1646834980725</updated>
+    </task>
+    <task id="LOCAL-00082" summary="滚动条可以拖动了">
+      <created>1646986857076</created>
+      <option name="number" value="00082" />
+      <option name="presentableId" value="LOCAL-00082" />
+      <option name="project" value="LOCAL" />
+      <updated>1646986857076</updated>
+    </task>
+    <task id="LOCAL-00083" summary="同步滚动">
+      <created>1646990492665</created>
+      <option name="number" value="00083" />
+      <option name="presentableId" value="LOCAL-00083" />
+      <option name="project" value="LOCAL" />
+      <updated>1646990492666</updated>
+    </task>
+    <task id="LOCAL-00084" summary="滚动条的隐藏和防抖">
+      <created>1647009289932</created>
+      <option name="number" value="00084" />
+      <option name="presentableId" value="LOCAL-00084" />
+      <option name="project" value="LOCAL" />
+      <updated>1647009289933</updated>
+    </task>
+    <task id="LOCAL-00085" summary="触屏端可以下拉了">
+      <created>1647056866129</created>
+      <option name="number" value="00085" />
+      <option name="presentableId" value="LOCAL-00085" />
+      <option name="project" value="LOCAL" />
+      <updated>1647056866129</updated>
+    </task>
+    <task id="LOCAL-00086" summary="加下拉内容展示">
+      <created>1647057978909</created>
+      <option name="number" value="00086" />
+      <option name="presentableId" value="LOCAL-00086" />
+      <option name="project" value="LOCAL" />
+      <updated>1647057978909</updated>
+    </task>
+    <task id="LOCAL-00087" summary="下拉效果完善">
+      <created>1647071899292</created>
+      <option name="number" value="00087" />
+      <option name="presentableId" value="LOCAL-00087" />
+      <option name="project" value="LOCAL" />
+      <updated>1647071899292</updated>
+    </task>
+    <task id="LOCAL-00088" summary="下拉更新执行函数">
+      <created>1647073315764</created>
+      <option name="number" value="00088" />
+      <option name="presentableId" value="LOCAL-00088" />
+      <option name="project" value="LOCAL" />
+      <updated>1647073315764</updated>
+    </task>
+    <task id="LOCAL-00089" summary="优化">
+      <created>1647073940631</created>
+      <option name="number" value="00089" />
+      <option name="presentableId" value="LOCAL-00089" />
+      <option name="project" value="LOCAL" />
+      <updated>1647073940632</updated>
+    </task>
+    <task id="LOCAL-00090" summary="tree组件新建">
+      <created>1647076246959</created>
+      <option name="number" value="00090" />
+      <option name="presentableId" value="LOCAL-00090" />
+      <option name="project" value="LOCAL" />
+      <updated>1647076246959</updated>
+    </task>
+    <task id="LOCAL-00091" summary="tree组件递归">
+      <created>1647078584542</created>
+      <option name="number" value="00091" />
+      <option name="presentableId" value="LOCAL-00091" />
+      <option name="project" value="LOCAL" />
+      <updated>1647078584543</updated>
+    </task>
+    <task id="LOCAL-00092" summary="加样式">
+      <created>1647137493085</created>
+      <option name="number" value="00092" />
+      <option name="presentableId" value="LOCAL-00092" />
+      <option name="project" value="LOCAL" />
+      <updated>1647137493085</updated>
+    </task>
+    <task id="LOCAL-00093" summary="添加选中参数">
+      <created>1647143391429</created>
+      <option name="number" value="00093" />
+      <option name="presentableId" value="LOCAL-00093" />
+      <option name="project" value="LOCAL" />
+      <updated>1647143391429</updated>
+    </task>
+    <task id="LOCAL-00094" summary="实现选中/取消 功能">
+      <created>1647145251737</created>
+      <option name="number" value="00094" />
+      <option name="presentableId" value="LOCAL-00094" />
+      <option name="project" value="LOCAL" />
+      <updated>1647145251737</updated>
+    </task>
+    <task id="LOCAL-00095" summary="tree 加 multiple">
+      <created>1647147170237</created>
+      <option name="number" value="00095" />
+      <option name="presentableId" value="LOCAL-00095" />
+      <option name="project" value="LOCAL" />
+      <updated>1647147170237</updated>
+    </task>
+    <task id="LOCAL-00096" summary="tree 可 单选">
+      <created>1647160816092</created>
+      <option name="number" value="00096" />
+      <option name="presentableId" value="LOCAL-00096" />
+      <option name="project" value="LOCAL" />
+      <updated>1647160816092</updated>
+    </task>
+    <task id="LOCAL-00097" summary="tree 可 单选/多选/扩大可选框点击范围">
+      <created>1647167310999</created>
+      <option name="number" value="00097" />
+      <option name="presentableId" value="LOCAL-00097" />
+      <option name="project" value="LOCAL" />
+      <updated>1647167310999</updated>
+    </task>
+    <task id="LOCAL-00098" summary="tree 可以折叠了">
+      <created>1647231677598</created>
+      <option name="number" value="00098" />
+      <option name="presentableId" value="LOCAL-00098" />
+      <option name="project" value="LOCAL" />
+      <updated>1647231677598</updated>
+    </task>
+    <task id="LOCAL-00099" summary="tree 单独提出子组件">
+      <created>1647241387123</created>
+      <option name="number" value="00099" />
+      <option name="presentableId" value="LOCAL-00099" />
+      <option name="project" value="LOCAL" />
+      <updated>1647241387123</updated>
+    </task>
+    <task id="LOCAL-00100" summary="tree 子组件 数据类型声明">
+      <created>1647242953084</created>
+      <option name="number" value="00100" />
+      <option name="presentableId" value="LOCAL-00100" />
+      <option name="project" value="LOCAL" />
+      <updated>1647242953084</updated>
+    </task>
+    <task id="LOCAL-00101" summary="新建 useUpdate">
+      <created>1647243866532</created>
+      <option name="number" value="00101" />
+      <option name="presentableId" value="LOCAL-00101" />
+      <option name="project" value="LOCAL" />
+      <updated>1647243866532</updated>
+    </task>
+    <task id="LOCAL-00102" summary="封装/优化 useUpdate">
+      <created>1647244259276</created>
+      <option name="number" value="00102" />
+      <option name="presentableId" value="LOCAL-00102" />
+      <option name="project" value="LOCAL" />
+      <updated>1647244259276</updated>
+    </task>
+    <task id="LOCAL-00103" summary="tree 加 折叠图标/优化">
+      <created>1647253999391</created>
+      <option name="number" value="00103" />
+      <option name="presentableId" value="LOCAL-00103" />
+      <option name="project" value="LOCAL" />
+      <updated>1647253999391</updated>
+    </task>
+    <task id="LOCAL-00104" summary="新建城市选择组件">
+      <created>1647315826744</created>
+      <option name="number" value="00104" />
+      <option name="presentableId" value="LOCAL-00104" />
+      <option name="project" value="LOCAL" />
+      <updated>1647315826744</updated>
+    </task>
+    <task id="LOCAL-00105" summary="城市选择组件 雏形">
+      <created>1647316459321</created>
+      <option name="number" value="00105" />
+      <option name="presentableId" value="LOCAL-00105" />
+      <option name="project" value="LOCAL" />
+      <updated>1647316459321</updated>
+    </task>
+    <task id="LOCAL-00106" summary="CitySelect 弹窗布局">
+      <created>1647327898794</created>
+      <option name="number" value="00106" />
+      <option name="presentableId" value="LOCAL-00106" />
+      <option name="project" value="LOCAL" />
+      <updated>1647327898794</updated>
+    </task>
+    <task id="LOCAL-00107" summary="CitySelect 定位当前城市">
+      <created>1647329133357</created>
+      <option name="number" value="00107" />
+      <option name="presentableId" value="LOCAL-00107" />
+      <option name="project" value="LOCAL" />
+      <updated>1647329133357</updated>
+    </task>
+    <task id="LOCAL-00108" summary="CitySelect 拼接城市首字母数组">
+      <created>1647336143237</created>
+      <option name="number" value="00108" />
+      <option name="presentableId" value="LOCAL-00108" />
+      <option name="project" value="LOCAL" />
+      <updated>1647336143237</updated>
+    </task>
+    <task id="LOCAL-00109" summary="CitySelect 通过context将字母数据传给子组件">
+      <created>1647338001210</created>
+      <option name="number" value="00109" />
+      <option name="presentableId" value="LOCAL-00109" />
+      <option name="project" value="LOCAL" />
+      <updated>1647338001211</updated>
+    </task>
+    <task id="LOCAL-00110" summary="CitySelect 遍历城市索引">
+      <created>1647354963497</created>
+      <option name="number" value="00110" />
+      <option name="presentableId" value="LOCAL-00110" />
+      <option name="project" value="LOCAL" />
+      <updated>1647354963497</updated>
+    </task>
+    <task id="LOCAL-00111" summary="CitySelect 遍历城市名/样式">
+      <created>1647403604585</created>
+      <option name="number" value="00111" />
+      <option name="presentableId" value="LOCAL-00111" />
+      <option name="project" value="LOCAL" />
+      <updated>1647403604585</updated>
+    </task>
+    <task id="LOCAL-00112" summary="CitySelect 选中城市功能">
+      <created>1647405007848</created>
+      <option name="number" value="00112" />
+      <option name="presentableId" value="LOCAL-00112" />
+      <option name="project" value="LOCAL" />
+      <updated>1647405007848</updated>
+    </task>
+    <task id="LOCAL-00113" summary="CitySelect 点击字母展示城市列表">
+      <created>1647416618780</created>
+      <option name="number" value="00113" />
+      <option name="presentableId" value="LOCAL-00113" />
+      <option name="project" value="LOCAL" />
+      <updated>1647416618780</updated>
+    </task>
+    <task id="LOCAL-00114" summary="tree 可以全选了">
+      <created>1647424913906</created>
+      <option name="number" value="00114" />
+      <option name="presentableId" value="LOCAL-00114" />
+      <option name="project" value="LOCAL" />
+      <updated>1647424913906</updated>
+    </task>
+    <task id="LOCAL-00115" summary="tree 全选/半选的父级子级联动">
+      <created>1647501130157</created>
+      <option name="number" value="00115" />
+      <option name="presentableId" value="LOCAL-00115" />
+      <option name="project" value="LOCAL" />
+      <updated>1647501130157</updated>
+    </task>
+    <option name="localTasksCounter" value="116" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="tree组件递归" />
+    <MESSAGE value="加样式" />
+    <MESSAGE value="添加选中参数" />
+    <MESSAGE value="实现选中/取消 功能" />
+    <MESSAGE value="tree 加 multiple" />
+    <MESSAGE value="tree 可 单选" />
+    <MESSAGE value="tree 可 单选/多选/扩大可选框点击范围" />
+    <MESSAGE value="tree 可以折叠了" />
+    <MESSAGE value="tree 单独提出子组件" />
+    <MESSAGE value="tree 子组件 数据类型声明" />
+    <MESSAGE value="新建 useUpdate" />
+    <MESSAGE value="封装/优化 useUpdate" />
+    <MESSAGE value="tree 加 折叠图标/优化" />
+    <MESSAGE value="新建城市选择组件" />
+    <MESSAGE value="城市选择组件 雏形" />
+    <MESSAGE value="CitySelect 弹窗布局" />
+    <MESSAGE value="CitySelect 定位当前城市" />
+    <MESSAGE value="CitySelect 拼接城市首字母数组" />
+    <MESSAGE value="CitySelect 通过context将字母数据传给子组件" />
+    <MESSAGE value="CitySelect 遍历城市索引" />
+    <MESSAGE value="CitySelect 遍历城市名/样式" />
+    <MESSAGE value="CitySelect 选中城市功能" />
+    <MESSAGE value="CitySelect 点击字母展示城市列表" />
+    <MESSAGE value="tree 可以全选了" />
+    <MESSAGE value="tree 全选/半选的父级子级联动" />
+    <option name="LAST_COMMIT_MESSAGE" value="tree 全选/半选的父级子级联动" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+</project>
