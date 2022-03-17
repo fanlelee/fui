@@ -9,10 +9,12 @@ const TreeExample: React.FunctionComponent = () => {
             value: '1',
             children: [
                 {text: '1.1', value: '1.1'},
-                {text: '1.2', value: '1.2',children:[
+                {
+                    text: '1.2', value: '1.2', children: [
                         {text: '1.2.1', value: '1.2.1'},
                         {text: '1.2.2', value: '1.2.2'}
-                    ]}
+                    ]
+                }
             ]
         },
         {
@@ -25,12 +27,12 @@ const TreeExample: React.FunctionComponent = () => {
         }
     ]);
     const [selectedValues, setSelectedValues] = useState(['1.1', '2.2', '2']);
-    const [selectedValue, setSelectedValue] = useState('2');
-    const onChange = (selected:string) => {
-            setSelectedValue(selected);
+    const [selectedValue, setSelectedValue] = useState(['2.1']);
+    const onChange = (selected: []) => {
+        setSelectedValue(selected);
     };
-    const onChange2 = (selected:string[]) => {
-            setSelectedValues(selected);
+    const onChange2 = (selected: string[]) => {
+        setSelectedValues(selected);
     };
 
     return (<>
@@ -39,19 +41,20 @@ const TreeExample: React.FunctionComponent = () => {
             sourceData={sourceData}
             selected={selectedValue}
             onChange={onChange}
+            multiple={false}
         />
-
 
         <hr/>
         多选：
         <Tree
-        sourceData={sourceData}
-        selected={selectedValues}
-        onChange={onChange2}
-        multiple={true}
-    />
+            sourceData={sourceData}
+            selected={selectedValues}
+            onChange={onChange2}
+            multiple={true}
+        />
 
     </>);
-};
+}
+
 
 export default TreeExample;

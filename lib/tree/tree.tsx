@@ -9,34 +9,29 @@ export interface SourceDataItem {
     children?: SourceDataItem[]
 }
 
-export type TreeData = (
-    {
-        selected: string[],
-        multiple: true,
-        onChange: (newSelected: string[]) => void
-    } |
-    {
-        selected: string,
-        multiple?: false,
-        onChange: (newSelected: string) => void
-    }
-    )
 type TreeProps = {
     className?: string
     sourceData: SourceDataItem[]
-
-} & TreeData
+    selected: string[],
+    multiple: boolean,
+    onChange: (newSelected: string[]) => void
+}
 
 const sc = scopedClassMaker('tree');
 
 const Tree: React.FunctionComponent<TreeProps> = (props) => {
     const {className, onChange, selected, sourceData, multiple, ...rest} = props;
-
+    const onItemClick = (selected:string[])=>{
+        onChange(selected)
+    }
     return (<>
         <div className={sc('', className)} {...rest}>
             {sourceData.map((item) =>
-                <TreeItem key={item.value} level={1} parentProps={({onChange, selected, multiple} as TreeData)}
-                          item={item}/>
+                <TreeItem key={item.value}
+                          level={1}
+                          onItemClick={onItemClick}
+                          parentProps={({onChange, selected, multiple})}
+                          item={item} />
             )}
         </div>
     </>);
