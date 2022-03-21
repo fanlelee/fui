@@ -10,8 +10,16 @@ import FormExample from './lib/form/form.example';
 import ScrollExample from './lib/scroll/scroll.example';
 import TreeExample from './lib/tree/tree.example';
 import CitySelectExample from './lib/citySelect/citySelect.example';
+import ButtonDemo from './lib/button/button.demo';
 
-
+const Home:React.FC = ()=>{
+    return <>
+        <div>
+            <h1>FUI</h1>
+            <p>一套基于React而开发的UI框架。</p>
+        </div>
+    </>
+}
 ReactDOM.render(
     <HashRouter>
         <Layout className="site-page">
@@ -23,6 +31,7 @@ ReactDOM.render(
                 <Aside className="site-aside">
                     <h2>组件</h2>
                     <ul>
+                        <li><NavLink to='/button'>button组件</NavLink></li>
                         <li><NavLink to='/icon'>icon组件</NavLink></li>
                         <li><NavLink to='/dialog'>dialog组件</NavLink></li>
                         <li><NavLink to='/layout'>layout组件</NavLink></li>
@@ -34,7 +43,9 @@ ReactDOM.render(
                 </Aside>
                 <Content className="site-main">
                     <Routes>
+                        <Route path='*'  element={<Home/>}/>
                         <Route path='/icon' element={<IconDemo/>}/>
+                        <Route path='/button' element={<ButtonDemo/>}/>
                         <Route path='/dialog' element={<Dialog/>}/>
                         <Route path='/layout' element={<LayoutExample/>}/>
                         <Route path='/form' element={<FormExample/>}/>
@@ -50,3 +61,4 @@ ReactDOM.render(
         </Layout>
     </HashRouter>
     , document.getElementById('root'));
+
