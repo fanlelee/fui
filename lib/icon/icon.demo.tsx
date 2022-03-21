@@ -15,6 +15,7 @@ const IconDemo: React.FunctionComponent = () => {
             <li> <Icon name='all'/><span>all</span></li>
             <li> <Icon name='arrow-left'/><span>arrow-left</span></li>
             <li> <Icon name='business-man'/><span>business-man</span></li>
+            <li> <Icon name='telephone'/><span>telephone</span></li>
             <li> <Icon name='clock'/><span>clock</span></li>
             <li> <Icon name='close'/><span>close</span></li>
             <li> <Icon name='code'/><span>code</span></li>

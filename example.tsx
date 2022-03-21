@@ -11,6 +11,7 @@ import ScrollExample from './lib/scroll/scroll.example';
 import TreeExample from './lib/tree/tree.example';
 import CitySelectExample from './lib/citySelect/citySelect.example';
 import ButtonDemo from './lib/button/button.demo';
+import InputDemo from './lib/input/input.demo';
 
 const Home:React.FC = ()=>{
     return <>
@@ -20,6 +21,8 @@ const Home:React.FC = ()=>{
         </div>
     </>
 }
+
+
 ReactDOM.render(
     <HashRouter>
         <Layout className="site-page">
@@ -32,6 +35,7 @@ ReactDOM.render(
                     <h2>组件</h2>
                     <ul>
                         <li><NavLink to='/button'>button组件</NavLink></li>
+                        <li><NavLink to='/input'>input组件</NavLink></li>
                         <li><NavLink to='/icon'>icon组件</NavLink></li>
                         <li><NavLink to='/dialog'>dialog组件</NavLink></li>
                         <li><NavLink to='/layout'>layout组件</NavLink></li>
@@ -44,8 +48,9 @@ ReactDOM.render(
                 <Content className="site-main">
                     <Routes>
                         <Route path='*'  element={<Home/>}/>
-                        <Route path='/icon' element={<IconDemo/>}/>
                         <Route path='/button' element={<ButtonDemo/>}/>
+                        <Route path='/input' element={<InputDemo/>}/>
+                        <Route path='/icon' element={<IconDemo/>}/>
                         <Route path='/dialog' element={<Dialog/>}/>
                         <Route path='/layout' element={<LayoutExample/>}/>
                         <Route path='/form' element={<FormExample/>}/>
