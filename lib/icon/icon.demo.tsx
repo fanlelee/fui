@@ -32,6 +32,8 @@ const IconDemo: React.FunctionComponent = () => {
             <li> <Icon name='add-select'/><span>add-select</span></li>
             <li> <Icon name='vip'/><span>vip</span></li>
             <li> <Icon name='warning'/><span>warning</span></li>
+            <li> <Icon name='error'/><span>error</span></li>
+            <li> <Icon name='ok'/><span>ok</span></li>
             <li> <Icon name='download'/><span>download</span></li>
             <li> <Icon name='vip'/><span>vip</span></li>
             <li> <Icon name='scanning'/><span>scanning</span></li>

@@ -1,6 +1,6 @@
 @import "../_helper.scss";
 .fui-input {
-  display: inline-flex;
+  display: flex;
   justify-content: flex-start;
   align-items: center;
   vertical-align: bottom;
@@ -11,12 +11,34 @@
   border-radius: 4px;
   transition: box-shadow .5s;
   margin: 4px;
+  &-only { vertical-align: middle;}
   &:focus {
     border-color: lighten($main-color, 20%);
     box-shadow: 0 0 10 0 fade-out($main-color, .5);
   }
   &:hover {
     border-color: lighten($main-color, 20%);
+  }
+  &-error {
+    border: 1px solid red;
+    &:focus, &:hover {
+      border-color: lighten(red, 20%);
+    }
+    > .fui-input-icon-status > svg {color: red}
+  }
+  &-warning {
+    border: 1px solid #faad14;
+    &:focus, &:hover {
+      border-color: lighten(#faad14, 20%);
+    }
+    > .fui-input-icon-status > svg {color: #faad14}
+  }
+  &-ok {
+    border: 1px solid #389e0d;
+    &:focus, &:hover {
+      border-color: lighten(#389e0d, 20%);
+    }
+    > .fui-input-icon-status > svg {color: #389e0d}
   }
   &-inner {
     border: none;
@@ -27,7 +49,6 @@
       outline: none;
     }
   }
-  &-only {  vertical-align: middle;}
   &-icon {
     display: inline-flex;
     justify-content: center;
@@ -36,18 +57,23 @@
       color: darken($border-color, 20%);
     }
     &-left {
-      padding-top: 8px;
-      padding-bottom: 8px;
-      padding-right: 8px;
+      padding: 8px 8px 8px 0;
       margin-right: 8px;
       border-right: 1px solid $border-color;
     }
     &-right {
-      padding-top: 8px;
-      padding-bottom: 8px;
-      padding-left: 8px;
+      padding: 8px 0 8px 8px;
       margin-left: 8px;
       border-left: 1px solid $border-color;
     }
+    &-status {
+      border: none;
+      > svg {color: red;}
+    }
   }
+}
+.fui-input-container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
 }
