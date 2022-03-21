@@ -6,7 +6,8 @@ import DialogDemo from './lib/dialog/dialog.demo';
 import LayoutDemo from './lib/layout/layout.demo';
 import './example.scss';
 import Layout, {Header, Aside, Content, Footer} from './lib/layout/layout';
-import FormExample from './lib/form/form.example';
+import FormDemo from './lib/form/form.demo';
+import ValidatorDemo from './lib/form/validator.demo';
 import ScrollExample from './lib/scroll/scroll.example';
 import TreeExample from './lib/tree/tree.example';
 import CitySelectExample from './lib/citySelect/citySelect.example';
@@ -34,15 +35,16 @@ ReactDOM.render(
                 <Aside className="site-aside">
                     <h2>组件</h2>
                     <ul>
-                        <li><NavLink to='/button'>button组件</NavLink></li>
-                        <li><NavLink to='/input'>input组件</NavLink></li>
-                        <li><NavLink to='/icon'>icon组件</NavLink></li>
-                        <li><NavLink to='/dialog'>dialog组件</NavLink></li>
-                        <li><NavLink to='/layout'>layout组件</NavLink></li>
-                        <li><NavLink to='/form'>form组件</NavLink></li>
-                        <li><NavLink to='/scroll'>scroll组件</NavLink></li>
-                        <li><NavLink to='/tree'>tree组件</NavLink></li>
-                        <li><NavLink to='/citySelect'>citySelect组件</NavLink></li>
+                        <li><NavLink to='/button'>Button 按钮</NavLink></li>
+                        <li><NavLink to='/input'>Input 输入框</NavLink></li>
+                        <li><NavLink to='/icon'>Icon 图标</NavLink></li>
+                        <li><NavLink to='/dialog'>Dialog 弹窗</NavLink></li>
+                        <li><NavLink to='/layout'>Layout 布局</NavLink></li>
+                        <li><NavLink to='/form'>Form 表单</NavLink></li>
+                        <li><NavLink to='/validator'>Validator 校验器</NavLink></li>
+                        <li><NavLink to='/scroll'>Scroll 滚动窗</NavLink></li>
+                        <li><NavLink to='/tree'>Tree 树选择器</NavLink></li>
+                        <li><NavLink to='/citySelect'>CitySelect 城市选择(web端)</NavLink></li>
                     </ul>
                 </Aside>
                 <Content className="site-main">
@@ -53,7 +55,8 @@ ReactDOM.render(
                         <Route path='/icon' element={<IconDemo/>}/>
                         <Route path='/dialog' element={<DialogDemo/>}/>
                         <Route path='/layout' element={<LayoutDemo/>}/>
-                        <Route path='/form' element={<FormExample/>}/>
+                        <Route path='/form' element={<FormDemo/>}/>
+                        <Route path='/validator' element={<ValidatorDemo/>}/>
                         <Route path='/scroll' element={<ScrollExample/>}/>
                         <Route path='/tree' element={<TreeExample/>}/>
                         <Route path='/citySelect' element={<CitySelectExample/>}/>
