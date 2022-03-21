@@ -8,7 +8,8 @@ interface TreeProps {
     parentProps: {
         selected: string[],
         multiple: boolean,
-        onChange: (newSelected: string[]) => void
+        onChange: (newSelected: string[]) => void,
+        initialCollapse:boolean
     },
     level: number,
     item: SourceDataItem,
@@ -17,9 +18,9 @@ interface TreeProps {
 
 const sc = scopedClassMaker('tree');
 const TreeItem: React.FC<TreeProps> = (props) => {
-    const {multiple, onChange, selected} = props.parentProps;
+    const {multiple, onChange, selected,initialCollapse} = props.parentProps;
     const {item, onItemClick} = props;
-    const [collapse, setCollapse] = useState(false);
+    const [collapse, setCollapse] = useState(initialCollapse);
     const inputRef = useRef<HTMLInputElement>(null);
 
 

@@ -1,7 +1,6 @@
 import React, {useState} from 'react';
 import Tree from './tree';
 
-
 const TreeExample: React.FunctionComponent = () => {
     const [sourceData] = useState([
         {
@@ -27,34 +26,20 @@ const TreeExample: React.FunctionComponent = () => {
         }
     ]);
     const [selectedValues, setSelectedValues] = useState(['1.1', '2.2', '2']);
-    const [selectedValue, setSelectedValue] = useState(['2.1']);
-    const onChange = (selected: []) => {
-        setSelectedValue(selected);
-    };
-    const onChange2 = (selected: string[]) => {
+    const onChange = (selected: string[]) => {
         setSelectedValues(selected);
     };
 
-    return (<>
-        单选：
-        <Tree
-            sourceData={sourceData}
-            selected={selectedValue}
-            onChange={onChange}
-            multiple={false}
-        />
-
-        <hr/>
-        多选：
+    return (
         <Tree
             sourceData={sourceData}
             selected={selectedValues}
-            onChange={onChange2}
+            onChange={onChange}
             multiple={true}
+            initialCollapse={false}
         />
-
-    </>);
-}
+    );
+};
 
 
 export default TreeExample;

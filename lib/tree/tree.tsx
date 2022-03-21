@@ -15,12 +15,13 @@ type TreeProps = {
     selected: string[],
     multiple: boolean,
     onChange: (newSelected: string[]) => void
+    initialCollapse?:boolean
 }
 
 const sc = scopedClassMaker('tree');
 
 const Tree: React.FunctionComponent<TreeProps> = (props) => {
-    const {className, onChange, selected, sourceData, multiple, ...rest} = props;
+    const {className, onChange, selected, sourceData,initialCollapse, multiple, ...rest} = props;
     const onItemClick = (selected:string[])=>{
         onChange(selected)
     }
@@ -30,11 +31,15 @@ const Tree: React.FunctionComponent<TreeProps> = (props) => {
                 <TreeItem key={item.value}
                           level={1}
                           onItemClick={onItemClick}
-                          parentProps={({onChange, selected, multiple})}
+                          parentProps={({onChange, selected, multiple,initialCollapse:initialCollapse!})}
                           item={item} />
             )}
         </div>
     </>);
 };
+
+Tree.defaultProps = {
+    initialCollapse:true
+}
 
 export default Tree;
