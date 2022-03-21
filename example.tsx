@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import {Route, Routes, NavLink, HashRouter} from 'react-router-dom';
 import IconDemo from './lib/icon/icon.demo';
 import DialogDemo from './lib/dialog/dialog.demo';
-import LayoutExample from './lib/layout/layout.example';
+import LayoutDemo from './lib/layout/layout.demo';
 import './example.scss';
 import Layout, {Header, Aside, Content, Footer} from './lib/layout/layout';
 import FormExample from './lib/form/form.example';
@@ -52,7 +52,7 @@ ReactDOM.render(
                         <Route path='/input' element={<InputDemo/>}/>
                         <Route path='/icon' element={<IconDemo/>}/>
                         <Route path='/dialog' element={<DialogDemo/>}/>
-                        <Route path='/layout' element={<LayoutExample/>}/>
+                        <Route path='/layout' element={<LayoutDemo/>}/>
                         <Route path='/form' element={<FormExample/>}/>
                         <Route path='/scroll' element={<ScrollExample/>}/>
                         <Route path='/tree' element={<TreeExample/>}/>
