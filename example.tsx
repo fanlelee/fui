@@ -8,7 +8,7 @@ import './example.scss';
 import Layout, {Header, Aside, Content, Footer} from './lib/layout/layout';
 import FormDemo from './lib/form/form.demo';
 import ValidatorDemo from './lib/form/validator.demo';
-import ScrollExample from './lib/scroll/scroll.example';
+import ScrollDemo from './lib/scroll/scroll.demo';
 import TreeExample from './lib/tree/tree.example';
 import CitySelectExample from './lib/citySelect/citySelect.example';
 import ButtonDemo from './lib/button/button.demo';
@@ -57,7 +57,7 @@ ReactDOM.render(
                         <Route path='/layout' element={<LayoutDemo/>}/>
                         <Route path='/form' element={<FormDemo/>}/>
                         <Route path='/validator' element={<ValidatorDemo/>}/>
-                        <Route path='/scroll' element={<ScrollExample/>}/>
+                        <Route path='/scroll' element={<ScrollDemo/>}/>
                         <Route path='/tree' element={<TreeExample/>}/>
                         <Route path='/citySelect' element={<CitySelectExample/>}/>
                     </Routes>
