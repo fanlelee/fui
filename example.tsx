@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import {Route, Routes, NavLink, HashRouter} from 'react-router-dom';
 import IconDemo from './lib/icon/icon.demo';
-import Dialog from './lib/dialog/dialog.example';
+import DialogDemo from './lib/dialog/dialog.demo';
 import LayoutExample from './lib/layout/layout.example';
 import './example.scss';
 import Layout, {Header, Aside, Content, Footer} from './lib/layout/layout';
@@ -51,7 +51,7 @@ ReactDOM.render(
                         <Route path='/button' element={<ButtonDemo/>}/>
                         <Route path='/input' element={<InputDemo/>}/>
                         <Route path='/icon' element={<IconDemo/>}/>
-                        <Route path='/dialog' element={<Dialog/>}/>
+                        <Route path='/dialog' element={<DialogDemo/>}/>
                         <Route path='/layout' element={<LayoutExample/>}/>
                         <Route path='/form' element={<FormExample/>}/>
                         <Route path='/scroll' element={<ScrollExample/>}/>

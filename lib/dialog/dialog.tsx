@@ -2,12 +2,14 @@ import React, {ReactElement, ReactNode} from 'react';
 import './dialog.scss';
 import Icon from '../icon/icon';
 import ReactDOM from 'react-dom';
+import Button from '../button/button';
 
 interface DialogProps {
     visible: boolean,
     buttons?: Array<ReactElement>,
     onClose: React.MouseEventHandler,
-    closeOnClickMask?: boolean
+    closeOnClickMask?: boolean,
+    headerInfo?:string
 }
 
 function scopedClassMaker(prefix: string) {
@@ -41,7 +43,7 @@ const Dialog: React.FunctionComponent<DialogProps> = (props) => {
                     <Icon name='close'/>
                 </div>
                 <header className={sc('header')}>
-                    信息提示
+                    {props.headerInfo}
                 </header>
                 <main className={sc('main')}>
                     {props.children}
@@ -65,10 +67,11 @@ const Dialog: React.FunctionComponent<DialogProps> = (props) => {
 };
 
 Dialog.defaultProps = {
-    closeOnClickMask: false
+    closeOnClickMask: false,
+    headerInfo:'信息提示'
 };
 const alert = (content: string) => {
-    const button = <button onClick={() => onClose()}>OK</button>;
+    const button = <Button onClick={() => onClose()} level='important'>确定</Button>;
     const onClose = modal(content,[button]);
 };
 const confirm = (content: string, yes?: () => void, no?: () => void) => {
@@ -81,8 +84,8 @@ const confirm = (content: string, yes?: () => void, no?: () => void) => {
         yes && yes();
     };
     const onClose = modal(content, [
-        <button onClick={onClickNo}>取消</button>,
-        <button onClick={onClickYes}>确定</button>
+        <Button onClick={onClickNo}>取消</Button>,
+        <Button onClick={onClickYes} level='important'>确定</Button>
     ]);
 };
 

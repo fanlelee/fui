@@ -7,9 +7,12 @@ import './icon.demo.scss'
 const IconDemo: React.FunctionComponent = () => {
     return (<>
         <Demo code={require(`!!raw-loader!./icon.example`).default}>
+            <h3 style={{marginBottom:12}}>1、Icon基本用法：</h3>
             <IconExample/>
         </Demo>
+        <h3 style={{marginBottom:12}}>2、目前有以下icon：</h3>
         <ul className='ul-icon-demo'>
+
             <li> <Icon name='add'/><span>add</span></li>
             <li> <Icon name='add-account'/><span>add-account</span></li>
             <li> <Icon name='all'/><span>all</span></li>
@@ -22,7 +25,8 @@ const IconDemo: React.FunctionComponent = () => {
             <li> <Icon name='copy'/><span>copy</span></li>
             <li> <Icon name='dollar'/><span>dollar</span></li>
             <li> <Icon name='falling'/><span>falling</span></li>
-            <li> <Icon name='good-fill'/><span>good-fill'</span></li>
+            <li> <Icon name='smile'/><span>smile</span></li>
+            <li> <Icon name='good-fill'/><span>good-fill</span></li>
             <li> <Icon name='left-button'/><span>left-button</span></li>
             <li> <Icon name='loading'/><span>loading</span></li>
             <li> <Icon name='map'/><span>map</span></li>

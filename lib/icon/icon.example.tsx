@@ -3,6 +3,6 @@ import Icon from './icon';
 
 
  const IconExample :React.FunctionComponent = ()=>{
-    return <Icon name='loading'/>
+    return <Icon name='smile'/>
 }
 export default IconExample
