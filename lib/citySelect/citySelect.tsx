@@ -25,7 +25,7 @@ const MapContext = React.createContext<CityContext>({
     setDialogVisible: () => {}
 });
 const CitySelect: React.FunctionComponent<CitySelectProps> = (props) => {
-    const [dialogVisible, setDialogVisible] = useState(true);
+    const [dialogVisible, setDialogVisible] = useState(false);
     const map: CityContext['map'] = {};
 
     props.cityList.map(city => {
@@ -51,7 +51,7 @@ const Dialog: React.FC<{ onClose: () => void }> = (props) => {
                     选择城市
                 </header>
                 <div className={dsc('cityBox')}>
-                    <CurrentLocation/>
+                    <CurrentLocation onChoose={onChoose}/>
                     <div className={dsc('cityList')}>
                         <h3>全部城市</h3>
                         <ol className={dsc('cityIndexList')}>
@@ -85,7 +85,7 @@ const Dialog: React.FC<{ onClose: () => void }> = (props) => {
     );
 };
 
-const CurrentLocation: React.FC = () => {
+const CurrentLocation: React.FC<{ onChoose: (K: string) => void }> = (props) => {
     const [city, setCity] = useState<string>('加载中...');
     useEffect(() => {
         const request = new XMLHttpRequest();
@@ -94,6 +94,7 @@ const CurrentLocation: React.FC = () => {
             if ((request.status >= 200 && request.status < 300)
                 || request.status === 304) {
                 setCity(JSON.parse(request.responseText).city);
+                props.onChoose(JSON.parse(request.responseText).city);
             } else {
                 console.log(request.status);
             }

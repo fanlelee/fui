@@ -10,7 +10,7 @@ import FormDemo from './lib/form/form.demo';
 import ValidatorDemo from './lib/form/validator.demo';
 import ScrollDemo from './lib/scroll/scroll.demo';
 import TreeDemo from './lib/tree/tree.demo';
-import CitySelectExample from './lib/citySelect/citySelect.example';
+import CitySelectDemo from './lib/citySelect/citySelect.demo';
 import ButtonDemo from './lib/button/button.demo';
 import InputDemo from './lib/input/input.demo';
 
@@ -59,7 +59,7 @@ ReactDOM.render(
                         <Route path='/validator' element={<ValidatorDemo/>}/>
                         <Route path='/scroll' element={<ScrollDemo/>}/>
                         <Route path='/tree' element={<TreeDemo/>}/>
-                        <Route path='/citySelect' element={<CitySelectExample/>}/>
+                        <Route path='/citySelect' element={<CitySelectDemo/>}/>
                     </Routes>
                 </Content>
             </Layout>
