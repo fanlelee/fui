@@ -18,7 +18,9 @@ const Home:React.FC = ()=>{
     return <>
         <div>
             <h1>FUI</h1>
-            <p>一套基于React而开发的UI框架。</p>
+            <p>▪  一套基于React而开发的UI框架；</p>
+            <p>▪  使用了TypeScript、SCSS相关技术；</p>
+            <p>▪  使用Jest做单元测试、测试覆盖率，并通过Circle CI持续集成。</p>
         </div>
     </>
 }
@@ -30,10 +32,11 @@ ReactDOM.render(
             <Header className="site-header">
                 <img src={require('./logo.png').default} width="48" height="48" alt=""/>
                 <span> FUI </span>
+                <a className='github' target='_blank' href="https://github.com/fanlelee/fui/tree/main/lib">GitHub</a>
             </Header>
             <Layout>
                 <Aside className="site-aside">
-                    <h2>组件</h2>
+                    <h2><NavLink to='*'>组件</NavLink></h2>
                     <ul>
                         <li><NavLink to='/button'>Button 按钮</NavLink></li>
                         <li><NavLink to='/input'>Input 输入框</NavLink></li>
