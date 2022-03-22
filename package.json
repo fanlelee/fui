@@ -1,9 +1,9 @@
 {
   "name": "fui-fan",
   "description": "",
-  "version": "0.1.1",
-  "main": "dist/lib/index.js",
-  "types": "dist/lib/index.d.js",
+  "version": "0.1.2",
+  "main": "dist/lib/index",
+  "types": "dist/lib/index",
   "files": [
     "/dist/**/*"
   ],
